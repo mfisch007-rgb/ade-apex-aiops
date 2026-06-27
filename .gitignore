@@ -1,10 +1,135 @@
+# -----------------------------------------------------------------------------
+# ADE-APEX AI Platform
+# Production .gitignore
+# -----------------------------------------------------------------------------
 
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.python-version
+
+# Virtual Environments
+.venv/
+venv/
+env/
+ENV/
+
+# Build
+build/
+dist/
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
+
+# Testing
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.cache/
+
+# Type Checking
+.mypy_cache/
+.pytype/
+
+# Linting
+.ruff_cache/
+
+# IDE
+.vscode/
+.idea/
+*.iml
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Logs
+logs/
+*.log
+
+# Runtime
+*.pid
+*.pid.lock
+
+# Environment
+.env
+.env.local
+.env.production
+.env.development
+.env.test
+
+# Secrets
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+
+# Databases
+*.db
+*.sqlite
+*.sqlite3
+
+# Redis
+dump.rdb
+
+# Docker
+.docker/
+
+# Kubernetes
+.kube/
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+
+# Coverage
+coverage.xml
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Node
+node_modules/
+.npm/
+.pnpm-store/
+
+# Turbo
+.turbo/
+
+# Generated files
+generated/
+tmp/
+temp/
+
+# Backups
+*.bak
+*.old
+*.orig
+
+# OS
+.Trashes/
+.fseventsd/
+
+# Local development
+local/
+sandbox/
+
+# Project test file
+test.txt
 # SSH Keys
 *.pem
 *.key
 id_*
-y
-y.pub
 .env
 .env.*
 node_modules/
