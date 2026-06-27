@@ -1,0 +1,10 @@
+
+# SSH Keys
+*.pem
+*.key
+id_*
+y
+y.pub
+.env
+.env.*
+node_modules/
