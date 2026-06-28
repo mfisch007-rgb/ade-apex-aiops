@@ -6,6 +6,7 @@ from __future__ import annotations
 
 from app.kernel.contracts.events import Event, EventResult
 from app.kernel.contracts.runtime import RuntimeContract
+from app.kernel.events import EventBus
 from app.kernel.runtime.context import RuntimeContext
 from app.kernel.runtime.lifecycle import LifecycleManager
 from app.kernel.runtime.registry import RuntimeRegistry
@@ -23,6 +24,7 @@ class KernelRuntime(RuntimeContract):
         self._state = RuntimeState.CREATED
         self.context = RuntimeContext()
         self.registry = RuntimeRegistry()
+        self.event_bus = EventBus()
         self.lifecycle = LifecycleManager()
 
     @property
@@ -46,10 +48,12 @@ class KernelRuntime(RuntimeContract):
         self._state = RuntimeState.STOPPED
 
     async def publish(self, event: Event) -> EventResult:
+        await self.event_bus.publish(event)
+
         return EventResult(
             success=True,
             event_id=event.id,
-            message="Event accepted by runtime.",
+            message="Event published successfully.",
         )
 
     async def health(self) -> dict[str, str]:
