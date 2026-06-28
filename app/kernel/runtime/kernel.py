@@ -1,38 +1,60 @@
-from app.core import logger
+"""
+ADE-APEX Kernel Runtime implementation.
+"""
+
+from __future__ import annotations
+
+from app.kernel.contracts.events import Event, EventResult
+from app.kernel.contracts.runtime import RuntimeContract
+from app.kernel.runtime.context import RuntimeContext
+from app.kernel.runtime.lifecycle import LifecycleManager
+from app.kernel.runtime.registry import RuntimeRegistry
+from app.kernel.runtime.state import RuntimeState
 
 
-class Kernel:
+class KernelRuntime(RuntimeContract):
     """
-    ADE-APEX Kernel Runtime.
-    This is the central orchestrator for the platform.
+    Default ADE-APEX runtime.
     """
+
+    VERSION = "1.0.0"
 
     def __init__(self) -> None:
-        self.started = False
+        self._state = RuntimeState.CREATED
+        self.context = RuntimeContext()
+        self.registry = RuntimeRegistry()
+        self.lifecycle = LifecycleManager()
+
+    @property
+    def version(self) -> str:
+        return self.VERSION
+
+    @property
+    def is_running(self) -> bool:
+        return self._state is RuntimeState.RUNNING
+
+    async def initialize(self) -> None:
+        self.lifecycle.initialize()
+        self._state = RuntimeState.INITIALIZED
 
     async def start(self) -> None:
-        """
-        Start the kernel runtime.
-        """
-        logger.info("Starting ADE-APEX Kernel...")
-        self.started = True
+        self.lifecycle.start()
+        self._state = RuntimeState.RUNNING
 
     async def stop(self) -> None:
-        """
-        Stop the kernel runtime.
-        """
-        logger.info("Stopping ADE-APEX Kernel...")
-        self.started = False
+        self.lifecycle.stop()
+        self._state = RuntimeState.STOPPED
 
-    def status(self) -> dict:
-        """
-        Return current kernel status.
-        """
+    async def publish(self, event: Event) -> EventResult:
+        return EventResult(
+            success=True,
+            event_id=event.id,
+            message="Event accepted by runtime.",
+        )
+
+    async def health(self) -> dict[str, str]:
         return {
-            "started": self.started,
-            "version": "1.0.0",
-            "runtime": "ADE-APEX Kernel",
+            "runtime": self.version,
+            "state": self._state.value,
+            "status": "healthy",
         }
-
-
-kernel = Kernel()
