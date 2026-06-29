@@ -18,5 +18,4 @@ class Subscriber(ABC):
     async def handle(
         self,
         event: Event,
-    ) -> None:
-        ...
+    ) -> None: ...

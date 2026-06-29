@@ -18,5 +18,4 @@ class Publisher(ABC):
     async def publish(
         self,
         event: Event,
-    ) -> None:
-        ...
+    ) -> None: ...
