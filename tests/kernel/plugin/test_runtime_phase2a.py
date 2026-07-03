@@ -1,7 +1,6 @@
 """Production comprehensive suite validating Phase 2A Plugin Runtime requirements."""
 
 import pytest
-import asyncio
 from typing import Any
 from app.kernel.exceptions.plugin import (
     PluginValidationError,
@@ -9,13 +8,11 @@ from app.kernel.exceptions.plugin import (
     PluginExecutionError,
     PluginLifecycleError,
 )
-from app.kernel.plugin.model import PluginInterface, PluginMetadata, PluginState
+from app.kernel.plugin.model import PluginMetadata, PluginState
 from app.kernel.plugin.context import PluginRuntimeContext
-from app.kernel.plugin.health import PluginHealth
 from app.kernel.plugin.validator import PluginValidator
 from app.kernel.plugin.loader import PluginLoader
 from app.kernel.plugin.registry import PluginRegistry
-from app.kernel.plugin.lifecycle import PluginLifecycleManager
 from app.kernel.plugin.manager import PluginManager
 from app.kernel.plugin.runtime import PluginRuntime
 

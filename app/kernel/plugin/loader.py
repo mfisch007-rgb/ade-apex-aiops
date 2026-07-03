@@ -1,7 +1,7 @@
 """Dynamic module plugin loader engine."""
 
 from app.kernel.exceptions.plugin import PluginLoadError, PluginValidationError
-from app.kernel.plugin.model import PluginInterface, PluginState, PluginMetadata
+from app.kernel.plugin.model import PluginInterface, PluginState
 from app.kernel.plugin.health import PluginHealth
 from app.kernel.plugin.validator import PluginValidator
 
