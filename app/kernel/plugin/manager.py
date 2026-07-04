@@ -1,12 +1,14 @@
 """Central structural lifecycle organizer managing system integrations."""
 
 from typing import List, Optional
+
 from app.kernel.exceptions.plugin import PluginError
-from app.kernel.plugin.model import PluginInterface
+from app.kernel.plugin.event_bus import PluginEventBus
 from app.kernel.plugin.health import PluginHealth
-from app.kernel.plugin.registry import PluginRegistry
 from app.kernel.plugin.lifecycle import PluginLifecycleManager
 from app.kernel.plugin.loader import PluginLoader
+from app.kernel.plugin.model import PluginInterface
+from app.kernel.plugin.registry import PluginRegistry
 
 
 class PluginManager:
@@ -22,6 +24,7 @@ class PluginManager:
         self.registry = registry
         self._loader = loader
         self._lifecycles: dict[str, PluginLifecycleManager] = {}
+        self.event_bus = PluginEventBus()
 
     def install_plugin(self, plugin: PluginInterface) -> None:
         """Registers external processing drivers into core registries.
