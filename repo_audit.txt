@@ -1,0 +1,3548 @@
+=== REPOSITORY ARCHITECTURE ===
+.
+./LICENSE
+./Makefile
+./README.md
+./app
+./app/__init__.py
+./app/agents
+./app/agents/__init__.py
+./app/agents/base
+./app/agents/base/__init__.py
+./app/agents/builtin
+./app/agents/builtin/__init__.py
+./app/agents/system
+./app/agents/system/__init__.py
+./app/api
+./app/api/__init__.py
+./app/api/dependencies
+./app/api/dependencies/__init__.py
+./app/api/middleware
+./app/api/middleware/__init__.py
+./app/api/v1
+./app/api/v1/__init__.py
+./app/api/v1/router.py
+./app/auth
+./app/config
+./app/config/__init__.py
+./app/config/providers
+./app/config/providers/__init__.py
+./app/config/settings
+./app/config/settings/__init__.py
+./app/config/settings/config.py
+./app/connectors
+./app/connectors/__init__.py
+./app/connectors/base
+./app/connectors/base/__init__.py
+./app/connectors/database
+./app/connectors/database/__init__.py
+./app/connectors/filesystem
+./app/connectors/filesystem/__init__.py
+./app/connectors/http
+./app/connectors/http/__init__.py
+./app/connectors/llm
+./app/connectors/llm/__init__.py
+./app/core
+./app/core/__init__.py
+./app/core/logging.py
+./app/events
+./app/events/__init__.py
+./app/events/bus
+./app/events/bus/__init__.py
+./app/events/publishers
+./app/events/publishers/__init__.py
+./app/events/subscribers
+./app/events/subscribers/__init__.py
+./app/kernel
+./app/kernel/__init__.py
+./app/kernel/analytics
+./app/kernel/analytics/__init__.py
+./app/kernel/auth
+./app/kernel/auth/__init__.py
+./app/kernel/confidence
+./app/kernel/confidence/__init__.py
+./app/kernel/contracts
+./app/kernel/contracts/__init__.py
+./app/kernel/contracts/agent.py
+./app/kernel/contracts/base.py
+./app/kernel/contracts/events.py
+./app/kernel/contracts/memory.py
+./app/kernel/contracts/plugin.py
+./app/kernel/contracts/policy.py
+./app/kernel/contracts/router.py
+./app/kernel/contracts/runtime.py
+./app/kernel/contracts/tenant.py
+./app/kernel/contracts/workflow.py
+./app/kernel/events
+./app/kernel/events/__init__.py
+./app/kernel/events/event_bus.py
+./app/kernel/events/publisher.py
+./app/kernel/events/subscriber.py
+./app/kernel/exceptions
+./app/kernel/exceptions/plugin.py
+./app/kernel/interfaces
+./app/kernel/interfaces/__init__.py
+./app/kernel/memory
+./app/kernel/memory/__init__.py
+./app/kernel/memory/cache.py
+./app/kernel/memory/session.py
+./app/kernel/memory/store.py
+./app/kernel/notifications
+./app/kernel/notifications/__init__.py
+./app/kernel/plugin
+./app/kernel/plugin/context.py
+./app/kernel/plugin/dependency.py
+./app/kernel/plugin/discovery_service.py
+./app/kernel/plugin/event_bus.py
+./app/kernel/plugin/event_model.py
+./app/kernel/plugin/health.py
+./app/kernel/plugin/lifecycle.py
+./app/kernel/plugin/loader.py
+./app/kernel/plugin/manager.py
+./app/kernel/plugin/manifest.py
+./app/kernel/plugin/model.py
+./app/kernel/plugin/parser.py
+./app/kernel/plugin/registry.py
+./app/kernel/plugin/runtime.py
+./app/kernel/plugin/scanner.py
+./app/kernel/plugin/topology.py
+./app/kernel/plugin/validator.py
+./app/kernel/plugin_runtime
+./app/kernel/policy
+./app/kernel/policy/__init__.py
+./app/kernel/queue
+./app/kernel/queue/__init__.py
+./app/kernel/router
+./app/kernel/router/__init__.py
+./app/kernel/runtime
+./app/kernel/runtime/__init__.py
+./app/kernel/runtime/context.py
+./app/kernel/runtime/health.py
+./app/kernel/runtime/kernel.py
+./app/kernel/runtime/lifecycle.py
+./app/kernel/runtime/registry.py
+./app/kernel/runtime/state.py
+./app/kernel/runtime/status.py
+./app/kernel/runtime/version.py
+./app/kernel/scheduler
+./app/kernel/scheduler/__init__.py
+./app/kernel/tenant
+./app/kernel/tenant/__init__.py
+./app/main.py
+./app/memory
+./app/models
+./app/models/__init__.py
+./app/models/database
+./app/models/database/__init__.py
+./app/models/domain
+./app/models/domain/__init__.py
+./app/plugins
+./app/plugins/__init__.py
+./app/plugins/registry
+./app/plugins/registry/__init__.py
+./app/plugins/registry/discovery.py
+./app/plugins/registry/loader.py
+./app/plugins/registry/manager.py
+./app/plugins/registry/registry.py
+./app/plugins/runtime
+./app/plugins/runtime/__init__.py
+./app/plugins/runtime/internal
+./app/plugins/runtime/models
+./app/plugins/runtime/runtime.py
+./app/plugins/sdk
+./app/plugins/sdk/__init__.py
+./app/schemas
+./app/schemas/__init__.py
+./app/schemas/api
+./app/schemas/api/__init__.py
+./app/schemas/events
+./app/schemas/events/__init__.py
+./app/services
+./app/services/__init__.py
+./app/services/common
+./app/services/common/__init__.py
+./app/utils
+./app/utils/__init__.py
+./app/workflows
+./app/workflows/__init__.py
+./app/workflows/engine
+./app/workflows/engine/__init__.py
+./app/workflows/models
+./app/workflows/models/__init__.py
+./app/workflows/runtime
+./app/workflows/runtime/__init__.py
+./contracts
+./contracts/kernel-contract
+./contracts/kernel-contract/v1.0
+./contracts/kernel-contract/v1.0/events.yaml
+./contracts/kernel-contract/v1.0/kernel.yaml
+./contracts/kernel-contract/v1.0/runtime.yaml
+./deploy
+./deploy/local
+./deploy/production
+./deploy/staging
+./docker
+./docker-compose.dev.yml
+./docker-compose.yml
+./docker/dev
+./docker/prod
+./docs
+./docs/adr
+./docs/adr/0001-event-driven.md
+./docs/adr/0002-postgresql.md
+./docs/adr/0003-redis.md
+./docs/adr/0004-fastapi.md
+./docs/adr/0005-langgraph.md
+./docs/adr/0006-openai-router.md
+./docs/adr/0007-plugin-system.md
+./docs/adr/0008-multi-tenancy.md
+./docs/adr/0009-vector-memory.md
+./docs/adr/0010-observability.md
+./docs/adr/ADR-0001-Event-Bus.md
+./docs/adr/ADR-0002-Kernel-Separation.md
+./docs/adr/ADR-0003-Plugin-Architecture.md
+./docs/adr/ADR-0004-Policy-Driven-AI.md
+./docs/adr/ADR-0005-Multi-Tenancy.md
+./docs/ai-context
+./docs/ai-context/AI_HANDOFF.md
+./docs/ai-context/AI_OPERATING_MANUAL.md
+./docs/ai-context/MASTER_CONTEXT.md
+./docs/ai-context/PROJECT_HISTORY.md
+./docs/ai-context/archive
+./docs/ai-context/archive/chat-01.md
+./docs/architecture
+./docs/architecture/EVENT_SYSTEM.md
+./docs/architecture/KERNEL_ARCHITECTURE.md
+./docs/architecture/PLUGIN_RUNTIME.md
+./docs/architecture/architecture-bible.md
+./docs/architecture/architecture-layers.md
+./docs/architecture/architecture-principles.md
+./docs/architecture/design-philosophy.md
+./docs/architecture/development-workflow.md
+./docs/architecture/engineering-foundation.md
+./docs/architecture/glossary.md
+./docs/architecture/repository-structure.md
+./docs/architecture/system-context.md
+./docs/architecture/system-overview.md
+./docs/architecture/technology-stack.md
+./docs/branding
+./docs/branding/BRAND_GUIDE.md
+./docs/contracts
+./docs/contracts/analytics
+./docs/contracts/auth
+./docs/contracts/connector-sdk
+./docs/contracts/database
+./docs/contracts/kernel
+./docs/contracts/kernel/v1.0
+./docs/contracts/kernel/v1.0/01-core-runtime.md
+./docs/contracts/kernel/v1.0/02-event-bus.md
+./docs/contracts/kernel/v1.0/03-workflow-runtime.md
+./docs/contracts/kernel/v1.0/04-agent-runtime.md
+./docs/contracts/kernel/v1.0/05-scheduler.md
+./docs/contracts/kernel/v1.0/06-queue-manager.md
+./docs/contracts/kernel/v1.0/07-ai-router.md
+./docs/contracts/kernel/v1.0/08-policy-engine.md
+./docs/contracts/kernel/v1.0/09-confidence-engine.md
+./docs/contracts/kernel/v1.0/10-connector-sdk.md
+./docs/contracts/kernel/v1.0/11-plugin-sdk.md
+./docs/contracts/kernel/v1.0/12-memory-engine.md
+./docs/contracts/kernel/v1.0/13-knowledge-graph.md
+./docs/contracts/kernel/v1.0/14-authentication.md
+./docs/contracts/kernel/v1.0/15-authorization.md
+./docs/contracts/kernel/v1.0/16-tenant-manager.md
+./docs/contracts/kernel/v1.0/17-analytics-engine.md
+./docs/contracts/kernel/v1.0/18-notification-service.md
+./docs/contracts/kernel/v1.0/19-rest-api.md
+./docs/contracts/kernel/v1.0/20-websocket-api.md
+./docs/contracts/kernel/v1.0/kernel-contract.md
+./docs/contracts/knowledge-graph
+./docs/contracts/memory
+./docs/contracts/notifications
+./docs/contracts/plugin-sdk
+./docs/contracts/policy
+./docs/contracts/rest
+./docs/contracts/runtime
+./docs/contracts/security
+./docs/contracts/websocket
+./docs/contracts/workflows
+./docs/decisions
+./docs/decisions/DESIGN_DECISIONS.md
+./docs/dev
+./docs/dev/contracts.md
+./docs/dev/events.md
+./docs/dev/kernel.md
+./docs/dev/runtime.md
+./docs/diagrams
+./docs/engineering
+./docs/engineering/AI_COLLABORATION_RULES.md
+./docs/engineering/ENGINEERING_PACK_TEMPLATE.md
+./docs/engineering/ENGINEERING_STANDARD.md
+./docs/engineering/GIT_WORKFLOW.md
+./docs/engineering/KERNEL_FIRST_PRINCIPLES.md
+./docs/engineering/RELEASE_CHECKLIST.md
+./docs/engineering/REVIEW_CHECKLIST.md
+./docs/engineering/SUBSYSTEM_TEMPLATE.md
+./docs/engineering/TERMUX_EXECUTION_STANDARD.md
+./docs/engineering/examples
+./docs/engineering/examples/PACK_001.md
+./docs/engineering/packs
+./docs/engineering/packs/001A-worker-platform
+./docs/engineering/packs/001A-worker-platform/ARCHITECTURE.md
+./docs/engineering/packs/001A-worker-platform/CONTRACTS.md
+./docs/engineering/packs/001A-worker-platform/DESIGN_REVIEW.md
+./docs/engineering/packs/001A-worker-platform/DIRECTORY_LAYOUT.md
+./docs/engineering/packs/001A-worker-platform/IMPLEMENTATION_PLAN.md
+./docs/engineering/packs/001A-worker-platform/INTERFACES.md
+./docs/engineering/packs/001A-worker-platform/README.md
+./docs/engineering/packs/002-plugin-runtime
+./docs/engineering/packs/002-plugin-runtime/ARCHITECTURE.md
+./docs/engineering/packs/002-plugin-runtime/CONTRACTS.md
+./docs/engineering/packs/002-plugin-runtime/DESIGN_REVIEW.md
+./docs/engineering/packs/002-plugin-runtime/DIRECTORY_LAYOUT.md
+./docs/engineering/packs/002-plugin-runtime/IMPLEMENTATION_PLAN.md
+./docs/engineering/packs/002-plugin-runtime/INTERFACES.md
+./docs/engineering/packs/002-plugin-runtime/README.md
+./docs/engineering/packs/002-plugin-runtime/implementation
+./docs/engineering/packs/002-plugin-runtime/review
+./docs/engineering/packs/002-plugin-runtime/review/CONSISTENCY_REVIEW.md
+./docs/engineering/packs/README.md
+./docs/engineering/status
+./docs/engineering/status/PROJECT_STATUS.md
+./docs/engineering/templates
+./docs/engineering/templates/ENGINEERING_PACK.md
+./docs/handoff
+./docs/knowledge
+./docs/knowledge/KNOWLEDGE_MODEL.md
+./docs/research
+./docs/roadmap
+./docs/roadmap/PHASE_STATUS.md
+./docs/roadmap/ROADMAP.md
+./docs/roadmap/project-roadmap.md
+./docs/standards
+./docs/standards/ai-engineering-standards.md
+./docs/standards/api-standards.md
+./docs/standards/coding-standards.md
+./docs/standards/deployment-standards.md
+./docs/standards/documentation-standards.md
+./docs/standards/git-standards.md
+./docs/standards/naming-conventions.md
+./docs/standards/observability-standards.md
+./docs/standards/performance-standards.md
+./docs/standards/security-standards.md
+./docs/standards/testing-standards.md
+./examples
+./examples/connectors
+./examples/plugins
+./examples/workflows
+./infra
+./infra/ansible
+./infra/scripts
+./infra/terraform
+./k8s
+./package.json
+./pnpm-workspace.yaml
+./pyproject.toml
+./repo_audit.txt
+./scripts
+./scripts/dev
+./scripts/dev/check.sh
+./scripts/dev/format.sh
+./scripts/dev/test.sh
+./scripts/status.sh
+./sdk
+./sdk/python
+./sdk/typescript
+./tests
+./tests/__init__.py
+./tests/contracts
+./tests/e2e
+./tests/integration
+./tests/integration/__init__.py
+./tests/kernel
+./tests/kernel/plugin
+./tests/kernel/plugin/test_discovery_phase2b.py
+./tests/kernel/plugin/test_integration_phase2c.py
+./tests/kernel/plugin/test_runtime_phase2a.py
+./tests/performance
+./tests/plugin_runtime
+./tests/plugin_runtime/test_plugin_discovery.py
+./tests/plugin_runtime/test_plugin_loader.py
+./tests/plugin_runtime/test_plugin_manager.py
+./tests/plugin_runtime/test_plugin_registry.py
+./tests/plugin_runtime/test_plugin_runtime.py
+./tests/unit
+./tests/unit/__init__.py
+./tools
+./tools/ci
+./tools/dev
+./turbo.json
+
+=== CORE CONFIGURATIONS ===
+[build-system]
+requires = ["hatchling>=1.27.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "ade-apex-aiops"
+version = "0.1.0"
+description = "ADE-APEX Enterprise AI Orchestration Platform"
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "Proprietary" }
+
+authors = [
+    { name = "ADE-APEX Engineering" }
+]
+
+keywords = [
+    "ai",
+    "automation",
+    "llm",
+    "agents",
+    "workflow",
+    "orchestration",
+    "fastapi",
+    "langgraph"
+]
+
+dependencies = [
+    "fastapi>=0.116.0",
+    "uvicorn[standard]>=0.35.0",
+    "pydantic>=2.11.0",
+    "pydantic-settings>=2.10.0",
+    "sqlalchemy>=2.0.40",
+    "alembic>=1.16.0",
+    "psycopg[binary]>=3.2.0",
+    "redis>=6.2.0",
+    "httpx>=0.28.0",
+    "structlog>=25.4.0",
+    "loguru>=0.7.3",
+    "langgraph>=0.6.0",
+    "langchain>=0.3.0",
+    "openai>=1.95.0",
+    "tiktoken>=0.9.0",
+    "python-dotenv>=1.1.0",
+    "tenacity>=9.1.0",
+    "orjson>=3.11.0",
+    "prometheus-client>=0.22.0"
+]
+
+[project.optional-dependencies]
+
+dev = [
+    "pytest>=8.4.0",
+    "pytest-asyncio>=1.0.0",
+    "pytest-cov>=6.2.0",
+    "ruff>=0.12.0",
+    "black>=25.1.0",
+    "mypy>=1.16.0",
+    "pre-commit>=4.2.0"
+]
+
+[tool.black]
+line-length = 88
+target-version = ["py312"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py312"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+
+=== PYTHON SOURCE CODE ===
+
+--- File: app/api/v1/__init__.py ---
+from .router import router
+
+__all__ = ["router"]
+
+--- File: app/api/v1/router.py ---
+from fastapi import APIRouter
+
+router = APIRouter(prefix="/api/v1", tags=["API"])
+
+
+@router.get("/")
+async def api_root():
+    return {
+        "message": "Welcome to the ADE-APEX API",
+        "version": "1.0.0",
+    }
+
+
+@router.get("/status")
+async def status():
+    return {
+        "status": "ok",
+        "service": "ADE-APEX",
+        "version": "1.0.0",
+    }
+
+--- File: app/api/middleware/__init__.py ---
+
+--- File: app/api/dependencies/__init__.py ---
+
+--- File: app/api/__init__.py ---
+
+--- File: app/core/__init__.py ---
+from .logging import configure_logging, logger
+
+__all__ = [
+    "configure_logging",
+    "logger",
+]
+
+--- File: app/core/logging.py ---
+import logging
+import sys
+
+
+def configure_logging(level: str = "INFO") -> None:
+    """
+    Configure application logging.
+    """
+
+    logging.basicConfig(
+        level=getattr(logging, level.upper(), logging.INFO),
+        format="%(asctime)s | %(levelname)s | %(name)s | %(message)s",
+        handlers=[
+            logging.StreamHandler(sys.stdout),
+        ],
+        force=True,
+    )
+
+
+logger = logging.getLogger("ade_apex")
+
+--- File: app/kernel/runtime/__init__.py ---
+from .kernel import Kernel, kernel
+
+__all__ = [
+    "Kernel",
+    "kernel",
+]
+
+--- File: app/kernel/runtime/kernel.py ---
+"""
+ADE-APEX Kernel Runtime implementation.
+"""
+
+from __future__ import annotations
+
+from app.kernel.contracts.events import Event, EventResult
+from app.kernel.contracts.runtime import RuntimeContract
+from app.kernel.events import EventBus
+from app.kernel.runtime.context import RuntimeContext
+from app.kernel.runtime.lifecycle import LifecycleManager
+from app.kernel.runtime.registry import RuntimeRegistry
+from app.kernel.runtime.state import RuntimeState
+
+
+class KernelRuntime(RuntimeContract):
+    """
+    Default ADE-APEX runtime.
+    """
+
+    VERSION = "1.0.0"
+
+    def __init__(self) -> None:
+        self._state = RuntimeState.CREATED
+        self.context = RuntimeContext()
+        self.registry = RuntimeRegistry()
+        self.event_bus = EventBus()
+        self.lifecycle = LifecycleManager()
+
+    @property
+    def version(self) -> str:
+        return self.VERSION
+
+    @property
+    def is_running(self) -> bool:
+        return self._state is RuntimeState.RUNNING
+
+    async def initialize(self) -> None:
+        self.lifecycle.initialize()
+        self._state = RuntimeState.INITIALIZED
+
+    async def start(self) -> None:
+        self.lifecycle.start()
+        self._state = RuntimeState.RUNNING
+
+    async def stop(self) -> None:
+        self.lifecycle.stop()
+        self._state = RuntimeState.STOPPED
+
+    async def publish(self, event: Event) -> EventResult:
+        await self.event_bus.publish(event)
+
+        return EventResult(
+            success=True,
+            event_id=event.id,
+            message="Event published successfully.",
+        )
+
+    async def health(self) -> dict[str, str]:
+        return {
+            "runtime": self.version,
+            "state": self._state.value,
+            "status": "healthy",
+        }
+
+--- File: app/kernel/runtime/state.py ---
+"""
+Runtime state definitions for the ADE-APEX platform.
+"""
+
+from __future__ import annotations
+
+from enum import Enum
+
+
+class RuntimeState(str, Enum):
+    """
+    Lifecycle state of the Kernel Runtime.
+    """
+
+    CREATED = "created"
+    INITIALIZING = "initializing"
+    READY = "ready"
+    RUNNING = "running"
+    STOPPING = "stopping"
+    STOPPED = "stopped"
+    FAILED = "failed"
+
+--- File: app/kernel/runtime/lifecycle.py ---
+"""
+Lifecycle manager for the ADE-APEX Kernel Runtime.
+
+Responsible for transitioning the runtime between valid lifecycle
+states while preventing invalid transitions.
+"""
+
+from __future__ import annotations
+
+from app.kernel.runtime.state import RuntimeState
+
+
+class RuntimeLifecycle:
+    """
+    Controls runtime state transitions.
+    """
+
+    def __init__(self) -> None:
+        self._state = RuntimeState.CREATED
+
+    @property
+    def state(self) -> RuntimeState:
+        """
+        Current runtime state.
+        """
+        return self._state
+
+    @property
+    def is_running(self) -> bool:
+        """
+        Whether the runtime is actively running.
+        """
+        return self._state == RuntimeState.RUNNING
+
+    def transition(self, state: RuntimeState) -> None:
+        """
+        Transition to a new runtime state.
+        """
+        self._state = state
+
+    def reset(self) -> None:
+        """
+        Reset lifecycle back to CREATED.
+        """
+        self._state = RuntimeState.CREATED
+
+--- File: app/kernel/runtime/context.py ---
+"""
+Runtime execution context for the ADE-APEX platform.
+
+The RuntimeContext acts as the shared dependency container for the
+Kernel Runtime. It owns references to services that are initialized
+during startup and made available throughout the platform.
+"""
+
+from __future__ import annotations
+
+from dataclasses import dataclass, field
+from typing import Any
+
+
+@dataclass(slots=True)
+class RuntimeContext:
+    """
+    Shared runtime context.
+
+    Stores references to platform services without coupling the
+    contracts to their implementations.
+    """
+
+    services: dict[str, Any] = field(default_factory=dict)
+
+    def register(self, name: str, service: Any) -> None:
+        """
+        Register a runtime service.
+        """
+        self.services[name] = service
+
+    def get(self, name: str) -> Any:
+        """
+        Retrieve a registered runtime service.
+        """
+        return self.services.get(name)
+
+    def contains(self, name: str) -> bool:
+        """
+        Determine whether a service exists.
+        """
+        return name in self.services
+
+    def clear(self) -> None:
+        """
+        Remove every registered service.
+        """
+        self.services.clear()
+
+--- File: app/kernel/runtime/registry.py ---
+"""
+Runtime registry.
+
+Maintains platform runtime components.
+"""
+
+from __future__ import annotations
+
+from typing import Any
+
+
+class RuntimeRegistry:
+    """
+    Registry of runtime services.
+    """
+
+    def __init__(self) -> None:
+        self._services: dict[str, Any] = {}
+
+    def register(self, name: str, service: Any) -> None:
+        """
+        Register a runtime service.
+        """
+        self._services[name] = service
+
+    def get(self, name: str) -> Any:
+        """
+        Retrieve a registered service.
+        """
+        return self._services.get(name)
+
+    def exists(self, name: str) -> bool:
+        """
+        Check whether a service exists.
+        """
+        return name in self._services
+
+    def unregister(self, name: str) -> None:
+        """
+        Remove a service.
+        """
+        self._services.pop(name, None)
+
+    def clear(self) -> None:
+        """
+        Remove every registered service.
+        """
+        self._services.clear()
+
+    @property
+    def services(self) -> dict[str, Any]:
+        """
+        Registered services.
+        """
+        return dict(self._services)
+
+--- File: app/kernel/runtime/health.py ---
+
+--- File: app/kernel/runtime/status.py ---
+
+--- File: app/kernel/runtime/version.py ---
+
+--- File: app/kernel/contracts/__init__.py ---
+
+--- File: app/kernel/contracts/base.py ---
+"""
+Base contracts used across the ADE-APEX platform.
+
+Everything in the platform derives from these contracts.
+Business logic must never live here.
+"""
+
+from __future__ import annotations
+
+from abc import ABC
+from dataclasses import dataclass, field
+from datetime import datetime
+from typing import Any
+from uuid import uuid4
+
+
+@dataclass(slots=True)
+class Contract:
+    """
+    Root immutable contract.
+    """
+
+    id: str = field(default_factory=lambda: str(uuid4()))
+    created_at: datetime = field(default_factory=datetime.utcnow)
+
+
+class Component(ABC):
+    """
+    Base interface implemented by every platform component.
+    """
+
+    @property
+    def name(self) -> str:
+        return self.__class__.__name__
+
+    async def initialize(self) -> None:
+        """
+        Called during platform startup.
+        """
+
+    async def shutdown(self) -> None:
+        """
+        Called during graceful shutdown.
+        """
+
+
+class Serializable(ABC):
+    """
+    Common serialization interface.
+    """
+
+    def to_dict(self) -> dict[str, Any]:
+        return self.__dict__
+
+--- File: app/kernel/contracts/events.py ---
+"""
+Core event contracts for the ADE-APEX platform.
+
+All platform events inherit from these contracts.
+No event processing logic belongs here.
+"""
+
+from __future__ import annotations
+
+from dataclasses import dataclass, field
+from datetime import datetime
+from enum import Enum
+from typing import Any
+from uuid import uuid4
+
+
+class EventPriority(str, Enum):
+    LOW = "low"
+    NORMAL = "normal"
+    HIGH = "high"
+    CRITICAL = "critical"
+
+
+@dataclass(slots=True)
+class Event:
+    """
+    Base platform event.
+    """
+
+    id: str = field(default_factory=lambda: str(uuid4()))
+    event_type: str = ""
+    source: str = ""
+    tenant_id: str | None = None
+    correlation_id: str | None = None
+    timestamp: datetime = field(default_factory=datetime.utcnow)
+    priority: EventPriority = EventPriority.NORMAL
+    payload: dict[str, Any] = field(default_factory=dict)
+
+
+@dataclass(slots=True)
+class EventResult:
+    """
+    Result returned after an event has been processed.
+    """
+
+    success: bool
+    event_id: str
+    message: str = ""
+    metadata: dict[str, Any] = field(default_factory=dict)
+
+--- File: app/kernel/contracts/runtime.py ---
+"""
+Kernel Runtime contract for the ADE-APEX platform.
+
+Defines the public interface that every Kernel Runtime implementation
+must provide. No implementation logic belongs here.
+"""
+
+from __future__ import annotations
+
+from abc import ABC, abstractmethod
+
+from app.kernel.contracts.events import Event, EventResult
+
+
+class RuntimeContract(ABC):
+    """
+    Base contract for the ADE-APEX Kernel Runtime.
+    """
+
+    @property
+    @abstractmethod
+    def version(self) -> str:
+        """Current runtime version."""
+
+    @property
+    @abstractmethod
+    def is_running(self) -> bool:
+        """Whether the runtime is active."""
+
+    @abstractmethod
+    async def initialize(self) -> None:
+        """Initialize the runtime."""
+
+    @abstractmethod
+    async def start(self) -> None:
+        """Start the runtime."""
+
+    @abstractmethod
+    async def stop(self) -> None:
+        """Gracefully stop the runtime."""
+
+    @abstractmethod
+    async def publish(self, event: Event) -> EventResult:
+        """
+        Publish an event into the platform.
+        """
+
+    @abstractmethod
+    async def health(self) -> dict[str, str]:
+        """
+        Return runtime health information.
+        """
+
+--- File: app/kernel/contracts/plugin.py ---
+"""
+Plugin contracts for the ADE-APEX platform.
+
+Plugins extend the platform with additional capabilities while remaining
+isolated from the Kernel implementation.
+"""
+
+from __future__ import annotations
+
+from abc import ABC, abstractmethod
+from dataclasses import dataclass, field
+from typing import Any
+
+
+@dataclass(slots=True)
+class PluginMetadata:
+    """
+    Metadata describing a plugin.
+    """
+
+    name: str
+    version: str
+    author: str = ""
+    description: str = ""
+    enabled: bool = True
+    tags: list[str] = field(default_factory=list)
+
+
+class PluginContract(ABC):
+    """
+    Base contract implemented by every ADE-APEX plugin.
+    """
+
+    @property
+    @abstractmethod
+    def metadata(self) -> PluginMetadata:
+        """Plugin metadata."""
+
+    @abstractmethod
+    async def initialize(self) -> None:
+        """Initialize the plugin."""
+
+    @abstractmethod
+    async def shutdown(self) -> None:
+        """Shutdown the plugin."""
+
+    @abstractmethod
+    async def execute(
+        self,
+        action: str,
+        **kwargs: Any,
+    ) -> Any:
+        """
+        Execute a plugin action.
+        """
+
+--- File: app/kernel/contracts/agent.py ---
+"""
+Agent contracts for the ADE-APEX platform.
+
+Agents are intelligent execution units responsible for processing work,
+interacting with the Kernel Runtime, and collaborating through events.
+"""
+
+from __future__ import annotations
+
+from abc import ABC, abstractmethod
+from dataclasses import dataclass, field
+from typing import Any
+
+from app.kernel.contracts.events import Event
+
+
+@dataclass(slots=True)
+class AgentMetadata:
+    """
+    Metadata describing an agent.
+    """
+
+    name: str
+    version: str
+    description: str = ""
+    capabilities: list[str] = field(default_factory=list)
+    enabled: bool = True
+
+
+class AgentContract(ABC):
+    """
+    Base contract implemented by every ADE-APEX agent.
+    """
+
+    @property
+    @abstractmethod
+    def metadata(self) -> AgentMetadata:
+        """Agent metadata."""
+
+    @abstractmethod
+    async def initialize(self) -> None:
+        """Initialize the agent."""
+
+    @abstractmethod
+    async def shutdown(self) -> None:
+        """Shutdown the agent."""
+
+    @abstractmethod
+    async def handle(self, event: Event) -> Any:
+        """
+        Handle a platform event.
+        """
+
+    @abstractmethod
+    async def health(self) -> dict[str, Any]:
+        """
+        Return current health information.
+        """
+
+--- File: app/kernel/contracts/memory.py ---
+"""
+Memory contracts for the ADE-APEX platform.
+
+Defines the interface for all memory providers used by the Kernel,
+including short-term, long-term and vector memories.
+"""
+
+from __future__ import annotations
+
+from abc import ABC, abstractmethod
+from dataclasses import dataclass, field
+from typing import Any
+
+
+@dataclass(slots=True)
+class MemoryRecord:
+    """
+    Represents a single memory item.
+    """
+
+    key: str
+    value: Any
+    namespace: str = "default"
+    metadata: dict[str, Any] = field(default_factory=dict)
+
+
+class MemoryContract(ABC):
+    """
+    Base interface implemented by every ADE-APEX memory provider.
+    """
+
+    @abstractmethod
+    async def get(self, key: str) -> MemoryRecord | None:
+        """Retrieve a memory record."""
+
+    @abstractmethod
+    async def set(self, record: MemoryRecord) -> None:
+        """Store a memory record."""
+
+    @abstractmethod
+    async def delete(self, key: str) -> None:
+        """Delete a memory record."""
+
+    @abstractmethod
+    async def search(
+        self,
+        query: str,
+        limit: int = 10,
+    ) -> list[MemoryRecord]:
+        """
+        Search memory records.
+        """
+
+--- File: app/kernel/contracts/router.py ---
+"""
+Router contracts for the ADE-APEX platform.
+
+Routers determine where events, requests, and tasks should
+be dispatched across the platform.
+"""
+
+from __future__ import annotations
+
+from abc import ABC, abstractmethod
+from typing import Any
+
+from app.kernel.contracts.events import Event
+
+
+class RouterContract(ABC):
+    """
+    Base routing contract.
+    """
+
+    @abstractmethod
+    async def register(
+        self,
+        route: str,
+        target: Any,
+    ) -> None:
+        """
+        Register a route.
+        """
+
+    @abstractmethod
+    async def unregister(
+        self,
+        route: str,
+    ) -> None:
+        """
+        Remove a route.
+        """
+
+    @abstractmethod
+    async def dispatch(
+        self,
+        event: Event,
+    ) -> Any:
+        """
+        Dispatch an event to its destination.
+        """
+
+    @abstractmethod
+    async def resolve(
+        self,
+        route: str,
+    ) -> Any:
+        """
+        Resolve a registered route.
+        """
+
+--- File: app/kernel/contracts/workflow.py ---
+"""
+Workflow contracts for the ADE-APEX platform.
+
+Workflows coordinate multiple agents, plugins and services into
+repeatable execution pipelines.
+"""
+
+from __future__ import annotations
+
+from abc import ABC, abstractmethod
+from dataclasses import dataclass, field
+from enum import Enum
+from typing import Any
+
+
+class WorkflowStatus(str, Enum):
+    PENDING = "pending"
+    RUNNING = "running"
+    COMPLETED = "completed"
+    FAILED = "failed"
+    CANCELLED = "cancelled"
+
+
+@dataclass(slots=True)
+class WorkflowContext:
+    """
+    Shared execution context for a workflow.
+    """
+
+    workflow_id: str
+    variables: dict[str, Any] = field(default_factory=dict)
+    metadata: dict[str, Any] = field(default_factory=dict)
+
+
+class WorkflowContract(ABC):
+    """
+    Base contract implemented by all ADE-APEX workflows.
+    """
+
+    @property
+    @abstractmethod
+    def name(self) -> str:
+        """Workflow name."""
+
+    @abstractmethod
+    async def execute(
+        self,
+        context: WorkflowContext,
+    ) -> WorkflowStatus:
+        """
+        Execute the workflow.
+        """
+
+    @abstractmethod
+    async def cancel(self) -> None:
+        """
+        Cancel workflow execution.
+        """
+
+--- File: app/kernel/contracts/policy.py ---
+"""
+Policy contracts for the ADE-APEX platform.
+
+Policies define platform governance, authorization,
+validation, and execution rules.
+"""
+
+from __future__ import annotations
+
+from abc import ABC, abstractmethod
+from dataclasses import dataclass, field
+from typing import Any
+
+
+@dataclass(slots=True)
+class PolicyContext:
+    """
+    Context supplied during policy evaluation.
+    """
+
+    subject: str
+    action: str
+    resource: str
+    tenant_id: str | None = None
+    metadata: dict[str, Any] = field(default_factory=dict)
+
+
+@dataclass(slots=True)
+class PolicyDecision:
+    """
+    Result of evaluating a policy.
+    """
+
+    allowed: bool
+    reason: str = ""
+    metadata: dict[str, Any] = field(default_factory=dict)
+
+
+class PolicyContract(ABC):
+    """
+    Base contract implemented by every policy.
+    """
+
+    @property
+    @abstractmethod
+    def name(self) -> str:
+        """Policy name."""
+
+    @abstractmethod
+    async def evaluate(
+        self,
+        context: PolicyContext,
+    ) -> PolicyDecision:
+        """
+        Evaluate a policy decision.
+        """
+
+--- File: app/kernel/contracts/tenant.py ---
+"""
+Tenant contracts for the ADE-APEX platform.
+
+Defines the public interface for multi-tenant
+management across the platform.
+"""
+
+from __future__ import annotations
+
+from abc import ABC, abstractmethod
+from dataclasses import dataclass, field
+from typing import Any
+
+
+@dataclass(slots=True)
+class Tenant:
+    """
+    Represents a platform tenant.
+    """
+
+    id: str
+    name: str
+    enabled: bool = True
+    metadata: dict[str, Any] = field(default_factory=dict)
+
+
+class TenantContract(ABC):
+    """
+    Base contract implemented by tenant providers.
+    """
+
+    @abstractmethod
+    async def get(
+        self,
+        tenant_id: str,
+    ) -> Tenant | None:
+        """
+        Retrieve a tenant.
+        """
+
+    @abstractmethod
+    async def exists(
+        self,
+        tenant_id: str,
+    ) -> bool:
+        """
+        Determine whether a tenant exists.
+        """
+
+    @abstractmethod
+    async def list(self) -> list[Tenant]:
+        """
+        Return all tenants.
+        """
+
+--- File: app/kernel/interfaces/__init__.py ---
+
+--- File: app/kernel/events/__init__.py ---
+from .event_bus import EventBus
+from .publisher import Publisher
+from .subscriber import Subscriber
+
+__all__ = [
+    "EventBus",
+    "Publisher",
+    "Subscriber",
+]
+
+--- File: app/kernel/events/event_bus.py ---
+"""
+ADE-APEX Event Bus.
+
+Central asynchronous event dispatcher.
+"""
+
+from __future__ import annotations
+
+from collections import defaultdict
+from collections.abc import Awaitable, Callable
+
+from app.kernel.contracts.events import Event
+
+EventHandler = Callable[[Event], Awaitable[None]]
+
+
+class EventBus:
+    """
+    In-process asynchronous event bus.
+    """
+
+    def __init__(self) -> None:
+        self._subscribers: dict[str, list[EventHandler]] = defaultdict(list)
+
+    def subscribe(
+        self,
+        event_type: str,
+        handler: EventHandler,
+    ) -> None:
+        self._subscribers[event_type].append(handler)
+
+    async def publish(self, event: Event) -> None:
+        for handler in self._subscribers.get(event.event_type, []):
+            await handler(event)
+
+    def clear(self) -> None:
+        self._subscribers.clear()
+
+--- File: app/kernel/events/subscriber.py ---
+"""
+Subscriber contract.
+"""
+
+from __future__ import annotations
+
+from abc import ABC, abstractmethod
+
+from app.kernel.contracts.events import Event
+
+
+class Subscriber(ABC):
+    """
+    Base event subscriber.
+    """
+
+    @abstractmethod
+    async def handle(
+        self,
+        event: Event,
+    ) -> None: ...
+
+--- File: app/kernel/events/publisher.py ---
+"""
+Publisher contract.
+"""
+
+from __future__ import annotations
+
+from abc import ABC, abstractmethod
+
+from app.kernel.contracts.events import Event
+
+
+class Publisher(ABC):
+    """
+    Base publisher.
+    """
+
+    @abstractmethod
+    async def publish(
+        self,
+        event: Event,
+    ) -> None: ...
+
+--- File: app/kernel/scheduler/__init__.py ---
+
+--- File: app/kernel/queue/__init__.py ---
+
+--- File: app/kernel/router/__init__.py ---
+
+--- File: app/kernel/policy/__init__.py ---
+
+--- File: app/kernel/confidence/__init__.py ---
+
+--- File: app/kernel/memory/__init__.py ---
+"""
+Memory engine exports.
+"""
+
+from .cache import MemoryCache
+from .session import MemorySession
+from .store import MemoryStore
+
+__all__ = [
+    "MemoryCache",
+    "MemorySession",
+    "MemoryStore",
+]
+
+--- File: app/kernel/memory/store.py ---
+"""
+Memory store for ADE-APEX.
+"""
+
+from __future__ import annotations
+
+from typing import Any
+
+
+class MemoryStore:
+    """
+    Simple in-memory key/value store.
+
+    This becomes replaceable by Redis,
+    PostgreSQL,
+    Vector DB,
+    etc.
+    """
+
+    def __init__(self) -> None:
+        self._memory: dict[str, Any] = {}
+
+    async def get(self, key: str) -> Any | None:
+        return self._memory.get(key)
+
+    async def set(self, key: str, value: Any) -> None:
+        self._memory[key] = value
+
+    async def delete(self, key: str) -> None:
+        self._memory.pop(key, None)
+
+    async def clear(self) -> None:
+        self._memory.clear()
+
+--- File: app/kernel/memory/session.py ---
+"""
+Runtime session memory.
+"""
+
+from __future__ import annotations
+
+from dataclasses import dataclass, field
+from typing import Any
+
+
+@dataclass(slots=True)
+class SessionMemory:
+    """
+    Runtime session storage.
+    """
+
+    session_id: str
+
+    values: dict[str, Any] = field(default_factory=dict)
+
+    def get(self, key: str) -> Any | None:
+        return self.values.get(key)
+
+    def set(self, key: str, value: Any) -> None:
+        self.values[key] = value
+
+    def clear(self) -> None:
+        self.values.clear()
+
+--- File: app/kernel/memory/cache.py ---
+"""
+Simple runtime cache.
+"""
+
+from __future__ import annotations
+
+
+class MemoryCache:
+    """
+    In-memory cache.
+    """
+
+    def __init__(self) -> None:
+        self._cache: dict[str, object] = {}
+
+    def get(self, key: str) -> object | None:
+        return self._cache.get(key)
+
+    def set(self, key: str, value: object) -> None:
+        self._cache[key] = value
+
+    def delete(self, key: str) -> None:
+        self._cache.pop(key, None)
+
+    def clear(self) -> None:
+        self._cache.clear()
+
+--- File: app/kernel/auth/__init__.py ---
+
+--- File: app/kernel/tenant/__init__.py ---
+
+--- File: app/kernel/analytics/__init__.py ---
+
+--- File: app/kernel/notifications/__init__.py ---
+
+--- File: app/kernel/__init__.py ---
+
+--- File: app/kernel/exceptions/plugin.py ---
+"""Plugin execution framework error definitions."""
+
+
+class PluginError(Exception):
+    """Base exception for all plugin-related operational failures."""
+
+    pass
+
+
+class PluginValidationError(PluginError):
+    """Raised when a plugin fails structural or contract architectural validation."""
+
+    pass
+
+
+class PluginLoadError(PluginError):
+    """Raised when the plugin dynamic loader fails to initialize target runtime blocks."""
+
+    pass
+
+
+class PluginExecutionError(PluginError):
+    """Raised during live execution failure states within isolated plugins."""
+
+    pass
+
+
+class PluginLifecycleError(PluginError):
+    """Raised during illegal state transitions or corrupt operations in lifecycle managers."""
+
+    pass
+
+--- File: app/kernel/plugin/model.py ---
+"""Plugin runtime state and manifest models."""
+
+from dataclasses import dataclass
+from enum import Enum, auto
+from typing import Any, Protocol, runtime_checkable
+
+
+class PluginState(Enum):
+    """Execution status states defining the precise lifetime boundaries of a plugin."""
+
+    CREATED = auto()
+    DISCOVERED = auto()
+    LOADED = auto()
+    INITIALIZED = auto()
+    RUNNING = auto()
+    STOPPED = auto()
+    FAILED = auto()
+    DISABLED = auto()
+
+
+@dataclass(frozen=True)
+class PluginMetadata:
+    """Immutable structural manifest specification for enterprise plugins."""
+
+    name: str
+    version: str
+    description: str
+    author: str
+
+
+@runtime_checkable
+class PluginInterface(Protocol):
+    """Structural interface standard defining runtime-compliant plugins."""
+
+    metadata: PluginMetadata
+
+    async def initialize(self) -> None:
+        """Execute async startup dependencies allocation blocks."""
+        ...
+
+    async def execute(self, context: Any) -> Any:
+        """Run isolated pipeline computations against runtime execution engines."""
+        ...
+
+    async def shutdown(self) -> None:
+        """Gracefully release external processing allocations and worker queues."""
+        ...
+
+--- File: app/kernel/plugin/health.py ---
+"""Plugin operational telemetry tracking layers."""
+
+import time
+from dataclasses import dataclass, field
+from typing import Optional
+from app.kernel.plugin.model import PluginState
+
+
+@dataclass
+class PluginHealth:
+    """Mutable structural metric baseline tracker capturing real-time operational limits."""
+
+    status: PluginState = PluginState.CREATED
+    uptime: float = 0.0
+    last_execution: Optional[float] = None
+    execution_count: int = 0
+    version: str = "0.0.0"
+    last_error: Optional[str] = None
+    _start_time: Optional[float] = field(default=None, init=False, repr=False)
+
+    def transition_state(self, next_state: PluginState) -> None:
+        """Transitions execution states, recalculating active uptime configurations safely.
+
+        Args:
+            next_state: The target destination lifecycle state.
+        """
+        self.status = next_state
+        if next_state == PluginState.RUNNING:
+            if self._start_time is None:
+                self._start_time = time.time()
+        elif next_state in (
+            PluginState.STOPPED,
+            PluginState.FAILED,
+            PluginState.DISABLED,
+        ):
+            if self._start_time is not None:
+                self.uptime += time.time() - self._start_time
+                self._start_time = None
+
+    def update_execution(self, success: bool, error_msg: Optional[str] = None) -> None:
+        """Updates invocation count metrics and registers execution failure text maps.
+
+        Args:
+            success: Boolean metric indicator showing execution safety.
+            error_msg: Failure string details tracking core faults if present.
+        """
+        now = time.time()
+        self.last_execution = now
+        self.execution_count += 1
+        if not success:
+            self.last_error = error_msg
+
+--- File: app/kernel/plugin/validator.py ---
+"""Structural verification layer enforcing enterprise plugin API contracts."""
+
+from typing import Any, Set
+from app.kernel.exceptions.plugin import PluginValidationError
+from app.kernel.plugin.model import PluginInterface, PluginMetadata
+
+
+class PluginValidator:
+    """Enforces static interface rules, naming uniqueness, and architectural protocols."""
+
+    def __init__(self) -> None:
+        """Initializes internal unique tracking names allocations."""
+        self._registered_names: Set[str] = set()
+
+    def validate(self, plugin: Any) -> None:
+        """Validates plugin structure against production execution system capabilities.
+
+        Args:
+            plugin: Target module instance candidate under validation.
+
+        Raises:
+            PluginValidationError: If structural contracts or requirements are broken.
+        """
+        if not isinstance(plugin, PluginInterface):
+            raise PluginValidationError(
+                "Plugin does not conform to required PluginInterface blueprint protocol."
+            )
+
+        meta = getattr(plugin, "metadata", None)
+        if not isinstance(meta, PluginMetadata):
+            raise PluginValidationError(
+                "Missing valid PluginMetadata specification block."
+            )
+
+        if not getattr(meta, "name", None) or not meta.name.strip():
+            raise PluginValidationError(
+                "Plugin name contract element cannot be null or empty."
+            )
+
+        if not getattr(meta, "version", None) or not meta.version.strip():
+            raise PluginValidationError(
+                "Plugin version contract element cannot be null or empty."
+            )
+
+        for method in ("initialize", "execute", "shutdown"):
+            if not callable(getattr(plugin, method, None)):
+                raise PluginValidationError(
+                    f"Required callable lifecycle signature {method}() is missing."
+                )
+
+    def register_name(self, name: str) -> None:
+        """Enforces namespace uniqueness profiles across target runtime registries.
+
+        Args:
+            name: Intended unique string identifier mapping.
+
+        Raises:
+            PluginValidationError: If duplicate namespace collisions are detected.
+        """
+        if name in self._registered_names:
+            raise PluginValidationError(
+                f"Namespace conflict error: plugin name '{name}' is already registered."
+            )
+        self._registered_names.add(name)
+
+    def clear(self) -> None:
+        """Flushes structural namespaces tracking definitions."""
+        self._registered_names.clear()
+
+--- File: app/kernel/plugin/context.py ---
+"""Plugin execution isolated execution context framework."""
+
+from dataclasses import dataclass, field
+from typing import Any, Dict, Mapping
+
+
+@dataclass(frozen=True)
+class PluginRuntimeContext:
+    """Provides immutable environment and localized engine mapping values safely to plugins."""
+
+    environment: str
+    global_config: Mapping[str, Any] = field(default_factory=dict)
+    state_store: Dict[str, Any] = field(default_factory=dict)
+
+    def get_parameter(self, key: str, default: Any = None) -> Any:
+        """Extracts configuration elements out of global space safely.
+
+        Args:
+            key: Operational lookup route parameter string.
+            default: Alternative object parameter reference.
+
+        Returns:
+            Any: Target configuration lookup value or fallback value.
+        """
+        return self.global_config.get(key, default)
+
+--- File: app/kernel/plugin/registry.py ---
+"""Thread-safe registration workspace for plugins and telemetry components."""
+
+import threading
+from typing import Dict, List, Optional
+from app.kernel.plugin.model import PluginInterface
+from app.kernel.plugin.health import PluginHealth
+
+
+class PluginRegistry:
+    """Safe lookup structure containing functional execution drivers and system telemetries."""
+
+    def __init__(self) -> None:
+        """Configures atomic recursive execution locks and indexing storage dictionaries."""
+        self._lock: threading.RLock = threading.RLock()
+        self._plugins: Dict[str, PluginInterface] = {}
+        self._health_map: Dict[str, PluginHealth] = {}
+
+    def register(self, plugin: PluginInterface, health: PluginHealth) -> None:
+        """Safely saves structural plugin maps alongside tracking performance logs.
+
+        Args:
+            plugin: Instantiated plugin implementation component matching interfaces.
+            health: Metric collection tracking wrapper interface.
+        """
+        with self._lock:
+            name = plugin.metadata.name
+            self._plugins[name] = plugin
+            self._health_map[name] = health
+
+    def get_plugin(self, name: str) -> Optional[PluginInterface]:
+        """Looks up a safe working copy model string mapping paths.
+
+        Args:
+            name: Unique route name.
+
+        Returns:
+            Optional[PluginInterface]: The matching plugin object or None.
+        """
+        with self._lock:
+            return self._plugins.get(name)
+
+    def get_health(self, name: str) -> Optional[PluginHealth]:
+        """Retrieves performance limits safely matching specific targets.
+
+        Args:
+            name: Structural name key.
+
+        Returns:
+            Optional[PluginHealth]: Target performance monitoring context data or None.
+        """
+        with self._lock:
+            return self._health_map.get(name)
+
+    def list_all(self) -> List[PluginInterface]:
+        """Provides an atomic sequence copy of all active running elements.
+
+        Returns:
+            List[PluginInterface]: Current operational array elements.
+        """
+        with self._lock:
+            return list(self._plugins.values())
+
+--- File: app/kernel/plugin/lifecycle.py ---
+"""Plugin lifecycle automation coordinator."""
+
+import logging
+from app.kernel.exceptions.plugin import PluginLifecycleError
+from app.kernel.plugin.model import PluginInterface, PluginState
+from app.kernel.plugin.health import PluginHealth
+
+logger = logging.getLogger("ADE-APEX.PluginLifecycle")
+
+
+class PluginLifecycleManager:
+    """Coordinates runtime operations, validation switches, and execution status states securely."""
+
+    def __init__(self, plugin: PluginInterface, health: PluginHealth) -> None:
+        """Initializes state mappings links.
+
+        Args:
+            plugin: Target module matching active protocol verification specifications.
+            health: Health instrumentation model layer mapping instance metrics.
+        """
+        self._plugin = plugin
+        self._health = health
+
+    async def initialize(self) -> None:
+        """Invokes setup pipelines shifting state frameworks safely into position.
+
+        Raises:
+            PluginLifecycleError: If operational state changes are invalid.
+        """
+        if self._health.status not in (
+            PluginState.CREATED,
+            PluginState.LOADED,
+            PluginState.DISCOVERED,
+        ):
+            raise PluginLifecycleError(
+                f"Cannot initialize plugin from status state: {self._health.status.name}"
+            )
+
+        try:
+            await self._plugin.initialize()
+            self._health.transition_state(PluginState.INITIALIZED)
+        except Exception as exc:
+            self._health.transition_state(PluginState.FAILED)
+            self._health.update_execution(success=False, error_msg=str(exc))
+            raise PluginLifecycleError(
+                f"Plugin initialization lifecycle failed internally: {exc}"
+            ) from exc
+
+    async def start(self) -> None:
+        """Signals runtime loops shifting initialization frames forward into operation loops."""
+        if self._health.status != PluginState.INITIALIZED:
+            raise PluginLifecycleError(
+                f"Cannot start plugin that is not initialized. Status: {self._health.status.name}"
+            )
+        self._health.transition_state(PluginState.RUNNING)
+
+    async def shutdown(self) -> None:
+        """Gracefully commands target modules to destroy tasks and close resource allocations."""
+        if self._health.status == PluginState.STOPPED:
+            return
+
+        try:
+            await self._plugin.shutdown()
+            self._health.transition_state(PluginState.STOPPED)
+        except Exception as exc:
+            self._health.transition_state(PluginState.FAILED)
+            self._health.update_execution(success=False, error_msg=str(exc))
+            raise PluginLifecycleError(
+                f"Plugin shutdown lifecycle failed internally: {exc}"
+            ) from exc
+
+    async def restart(self) -> None:
+        """Forces immediate clean shutdowns and cycles execution initialization pipelines."""
+        await self.shutdown()
+        self._health.status = PluginState.LOADED
+        await self.initialize()
+        await self.start()
+
+    def enable(self) -> None:
+        """Enables target elements out of disabled system statuses blocks."""
+        if self._health.status != PluginState.DISABLED:
+            raise PluginLifecycleError(
+                "Plugin is already active or cannot be transitioned out of disabled state."
+            )
+        self._health.transition_state(PluginState.LOADED)
+
+    def disable(self) -> None:
+        """Halts visibility layers across frameworks tracking runtime components."""
+        self._health.transition_state(PluginState.DISABLED)
+
+--- File: app/kernel/plugin/loader.py ---
+"""Dynamic module plugin loader engine."""
+
+from app.kernel.exceptions.plugin import PluginLoadError, PluginValidationError
+from app.kernel.plugin.model import PluginInterface, PluginState
+from app.kernel.plugin.health import PluginHealth
+from app.kernel.plugin.validator import PluginValidator
+
+
+class PluginLoader:
+    """Manages structural validation runs, checking file specifications and dynamic instances."""
+
+    def __init__(self, validator: PluginValidator) -> None:
+        """Instantiates structural component tracking hooks.
+
+        Args:
+            validator: Production standard engine schema verification layer.
+        """
+        self._validator = validator
+
+    def load_instance(self, plugin_instance: PluginInterface) -> PluginHealth:
+        """Loads and tests a plugin instance against explicit runtime engine blueprints.
+
+        Args:
+            plugin_instance: Live runtime instantiation block under verification.
+
+        Returns:
+            PluginHealth: Telemetry metric configuration map initialized.
+
+        Raises:
+            PluginLoadError: If validation checks fail.
+        """
+        try:
+            self._validator.validate(plugin_instance)
+            self._validator.register_name(plugin_instance.metadata.name)
+        except PluginValidationError as exc:
+            raise PluginLoadError(
+                f"Plugin validation failed during load phase: {exc}"
+            ) from exc
+        except Exception as exc:
+            raise PluginLoadError(
+                f"Unexpected processing system failure loading target module: {exc}"
+            ) from exc
+
+        health = PluginHealth(
+            status=PluginState.LOADED, version=plugin_instance.metadata.version
+        )
+        return health
+
+--- File: app/kernel/plugin/manager.py ---
+"""Central structural lifecycle organizer managing system integrations."""
+
+from typing import List, Optional
+
+from app.kernel.exceptions.plugin import PluginError
+from app.kernel.plugin.event_bus import PluginEventBus
+from app.kernel.plugin.health import PluginHealth
+from app.kernel.plugin.lifecycle import PluginLifecycleManager
+from app.kernel.plugin.loader import PluginLoader
+from app.kernel.plugin.model import PluginInterface
+from app.kernel.plugin.registry import PluginRegistry
+
+
+class PluginManager:
+    """Combines registries, dynamic lifecycle managers, and loaders behind unified APIs."""
+
+    def __init__(self, registry: PluginRegistry, loader: PluginLoader) -> None:
+        """Configures execution tracking components.
+
+        Args:
+            registry: Central thread-safe runtime object tracking map.
+            loader: Subsystem loading code block module validation driver.
+        """
+        self.registry = registry
+        self._loader = loader
+        self._lifecycles: dict[str, PluginLifecycleManager] = {}
+        self.event_bus = PluginEventBus()
+
+    def install_plugin(self, plugin: PluginInterface) -> None:
+        """Registers external processing drivers into core registries.
+
+        Args:
+            plugin: Structural object block conforming to required protocols.
+        """
+        health = self._loader.load_instance(plugin)
+        self.registry.register(plugin, health)
+        self._lifecycles[plugin.metadata.name] = PluginLifecycleManager(plugin, health)
+
+    def get_lifecycle(self, name: str) -> PluginLifecycleManager:
+        """Resolves structural runtime automation handlers safely matching unique names.
+
+        Args:
+            name: Target identification string.
+
+        Returns:
+            PluginLifecycleManager: Configured state lifecycle coordinator.
+
+        Raises:
+            PluginError: If target module can not be found.
+        """
+        manager = self._lifecycles.get(name)
+        if not manager:
+            raise PluginError(f"Plugin lifecycle lookup failed for: {name}")
+        return manager
+
+    def get_plugin_health(self, name: str) -> Optional[PluginHealth]:
+        """Queries telemetry properties matching targets.
+
+        Args:
+            name: Identification string path.
+
+        Returns:
+            Optional[PluginHealth]: Configured structural status monitoring block or None.
+        """
+        return self.registry.get_health(name)
+
+    def list_installed(self) -> List[PluginInterface]:
+        """Lists active installed modules arrays.
+
+        Returns:
+            List[PluginInterface]: Active modules data block configurations mapping sequence.
+        """
+        return self.registry.list_all()
+
+--- File: app/kernel/plugin/runtime.py ---
+"""Primary execution engine running transaction pipelines through plugins."""
+
+import asyncio
+from typing import Any
+from app.kernel.exceptions.plugin import PluginExecutionError
+from app.kernel.plugin.model import PluginState
+from app.kernel.plugin.context import PluginRuntimeContext
+from app.kernel.plugin.manager import PluginManager
+
+
+class PluginRuntime:
+    """Dispatches asynchronous processing parameters down into validated plugin spaces."""
+
+    def __init__(self, manager: PluginManager) -> None:
+        """Binds internal coordination modules.
+
+        Args:
+            manager: Core tracking orchestration layer containing definitions.
+        """
+        self.manager = manager
+
+    async def execute_plugin(self, name: str, context: PluginRuntimeContext) -> Any:
+        """Safely routes processing tasks, tracking diagnostics metrics atomically.
+
+        Args:
+            name: Target plugin identification lookup path.
+            context: Safe immutable environment reference space values.
+
+        Returns:
+            Any: Computation output details returned by target execution blocks.
+
+        Raises:
+            PluginExecutionError: If target modules fail inside core calculations.
+        """
+        plugin = self.manager.registry.get_plugin(name)
+        health = self.manager.registry.get_health(name)
+
+        if not plugin or not health:
+            raise PluginExecutionError(
+                f"Execution target plugin '{name}' is not registered."
+            )
+
+        if health.status != PluginState.RUNNING:
+            raise PluginExecutionError(
+                f"Cannot execute plugin '{name}' because it is in state: {health.status.name}"
+            )
+
+        try:
+            if asyncio.iscoroutinefunction(plugin.execute):
+                result = await plugin.execute(context)
+            else:
+                result = plugin.execute(context)
+
+            health.update_execution(success=True)
+            return result
+        except Exception as exc:
+            health.update_execution(success=False, error_msg=str(exc))
+            raise PluginExecutionError(
+                f"Plugin execution loop threw unhandled exception: {exc}"
+            ) from exc
+
+--- File: app/kernel/plugin/manifest.py ---
+"""Plugin manifest verification models and structural immutable schemas."""
+
+from dataclasses import dataclass, field
+from typing import List, Mapping
+
+
+@dataclass(frozen=True)
+class PluginDependencySpec:
+    """Immutable declaration requirement specifications binding an external plugin constraint."""
+
+    name: str
+    version_range: str
+    optional: bool = False
+
+
+@dataclass(frozen=True)
+class PluginManifest:
+    """Immutable data schema containing the structurally checked properties of a discovered plugin."""
+
+    name: str
+    version: str
+    entry_point: str
+    description: str
+    author: str
+    dependencies: List[PluginDependencySpec] = field(default_factory=list)
+    capabilities: List[str] = field(default_factory=list)
+    metadata_options: Mapping[str, str] = field(default_factory=dict)
+
+--- File: app/kernel/plugin/parser.py ---
+"""Plugin manifest structure verification parser."""
+
+import json
+from typing import Any, Dict, List
+from app.kernel.exceptions.plugin import PluginValidationError
+from app.kernel.plugin.manifest import PluginDependencySpec, PluginManifest
+
+
+class PluginManifestParser:
+    """Parses raw text data inputs into validated structural PluginManifest objects."""
+
+    @staticmethod
+    def parse_json(raw_content: str) -> PluginManifest:
+        """Parses a raw JSON text string into a typed, validated PluginManifest object.
+
+        Args:
+            raw_content: Raw JSON text read from a manifest file.
+
+        Returns:
+            PluginManifest: A valid immutable manifest structure.
+
+        Raises:
+            PluginValidationError: If structural rules or parameters are invalid.
+        """
+        if not raw_content.strip():
+            raise PluginValidationError(
+                "Manifest content is empty and cannot be processed."
+            )
+
+        try:
+            data: Dict[str, Any] = json.loads(raw_content)
+        except json.JSONDecodeError as err:
+            raise PluginValidationError(
+                f"Invalid JSON format configuration syntax: {err}"
+            ) from err
+
+        required_keys = {"name", "version", "entry_point", "description", "author"}
+        missing_keys = required_keys - data.keys()
+        if missing_keys:
+            raise PluginValidationError(
+                f"Missing required manifest elements: {', '.join(missing_keys)}"
+            )
+
+        for key in required_keys:
+            if not isinstance(data[key], str) or not data[key].strip():
+                raise PluginValidationError(
+                    f"Manifest attribute '{key}' must be a non-empty string reference."
+                )
+
+        dependencies: List[PluginDependencySpec] = []
+        if "dependencies" in data:
+            if not isinstance(data["dependencies"], list):
+                raise PluginValidationError(
+                    "The 'dependencies' parameter must be configured as a structured list."
+                )
+
+            for index, dep in enumerate(data["dependencies"]):
+                if not isinstance(dep, dict):
+                    raise PluginValidationError(
+                        f"Dependency specification index {index} must be a dictionary block."
+                    )
+                if "name" not in dep or "version_range" not in dep:
+                    raise PluginValidationError(
+                        f"Dependency specs at index {index} must contain 'name' and 'version_range'."
+                    )
+
+                dependencies.append(
+                    PluginDependencySpec(
+                        name=str(dep["name"]),
+                        version_range=str(dep["version_range"]),
+                        optional=bool(dep.get("optional", False)),
+                    )
+                )
+
+        capabilities = [str(cap) for cap in data.get("capabilities", [])]
+        metadata_options = {
+            str(k): str(v) for k, v in data.get("metadata_options", {}).items()
+        }
+
+        return PluginManifest(
+            name=data["name"],
+            version=data["version"],
+            entry_point=data["entry_point"],
+            description=data["description"],
+            author=data["author"],
+            dependencies=dependencies,
+            capabilities=capabilities,
+            metadata_options=metadata_options,
+        )
+
+--- File: app/kernel/plugin/scanner.py ---
+"""Filesystem workspace directory scanner for dynamic plugin bundle exploration."""
+
+import pathlib
+from typing import Dict
+from app.kernel.exceptions.plugin import PluginLoadError
+from app.kernel.plugin.manifest import PluginManifest
+from app.kernel.plugin.parser import PluginManifestParser
+
+
+class PluginScanner:
+    """Traverses local system workspace directory targets to extract isolated plugin manifests."""
+
+    def __init__(self, parser: PluginManifestParser) -> None:
+        """Initializes scanner instance with manifest configuration parsing drivers.
+
+        Args:
+            parser: Target manifest structure verification engine instance.
+        """
+        self._parser = parser
+
+    def scan_directory(
+        self, base_path: pathlib.Path
+    ) -> Dict[pathlib.Path, PluginManifest]:
+        """Traverses directories checking path locations for manifest profiles.
+
+        Args:
+            base_path: Main directory root location path object to scan.
+
+        Returns:
+            Dict[pathlib.Path, PluginManifest]: Map linking file path locations to extracted manifests.
+
+        Raises:
+            PluginLoadError: If directory navigation actions fail.
+        """
+        discovered: Dict[pathlib.Path, PluginManifest] = {}
+
+        if not base_path.exists():
+            return discovered
+
+        if not base_path.is_dir():
+            raise PluginLoadError(
+                f"Target system workspace boundary path is not a directory structure: {base_path}"
+            )
+
+        try:
+            for manifest_file in base_path.glob("**/manifest.json"):
+                try:
+                    content = manifest_file.read_text(encoding="utf-8")
+                    manifest = self._parser.parse_json(content)
+                    discovered[manifest_file.parent] = manifest
+                except Exception as exc:
+                    raise PluginLoadError(
+                        f"Failed to extract manifest definition at {manifest_file}: {exc}"
+                    ) from exc
+        except Exception as exc:
+            if not isinstance(exc, PluginLoadError):
+                raise PluginLoadError(
+                    f"Directory scanner tree mapping exploration failed: {exc}"
+                ) from exc
+            raise exc
+
+        return discovered
+
+--- File: app/kernel/plugin/dependency.py ---
+"""Verifies cross-plugin software dependencies matrices."""
+
+from typing import Dict, List
+from app.kernel.exceptions.plugin import PluginValidationError
+from app.kernel.plugin.manifest import PluginManifest
+
+
+class PluginDependencyResolver:
+    """Checks semantic availability states ensuring operational dependency validation."""
+
+    @staticmethod
+    def match_version(version: str, version_range: str) -> bool:
+        """Evaluates semantic version rules directly against available version configurations.
+
+        Args:
+            version: Live string code version tracking label.
+            version_range: Target verification comparison limit specification string.
+
+        Returns:
+            bool: Verification truth match confirmation indicators.
+        """
+        if version_range == "*" or not version_range:
+            return True
+        if version_range.startswith("=="):
+            return version == version_range[2:].strip()
+        return version == version_range.strip()
+
+    def resolve_requirements(
+        self, manifests: List[PluginManifest]
+    ) -> List[PluginManifest]:
+        """Verifies existence profiles matching dependency declarations.
+
+        Args:
+            manifests: Target set of available configuration profiles.
+
+        Returns:
+            List[PluginManifest]: Sequence array containing fully validated elements.
+
+        Raises:
+            PluginValidationError: If breaking validation constraints are encountered.
+        """
+        registry: Dict[str, PluginManifest] = {m.name: m for m in manifests}
+        validated: List[PluginManifest] = []
+
+        for manifest in manifests:
+            for dep in manifest.dependencies:
+                if dep.name not in registry:
+                    if dep.optional:
+                        continue
+                    raise PluginValidationError(
+                        f"Unresolved critical dependency: Plugin '{manifest.name}' requires '{dep.name}'."
+                    )
+
+                target = registry[dep.name]
+                if not self.match_version(target.version, dep.version_range):
+                    if dep.optional:
+                        continue
+                    raise PluginValidationError(
+                        f"Version mismatch fault: '{manifest.name}' expects '{dep.name}' range "
+                        f"'{dep.version_range}', but found '{target.version}'."
+                    )
+
+            validated.append(manifest)
+
+        return validated
+
+--- File: app/kernel/plugin/topology.py ---
+"""Topological sorter ensuring deterministic linear sequence loads."""
+
+from typing import Dict, List, Set
+from app.kernel.exceptions.plugin import PluginValidationError
+from app.kernel.plugin.manifest import PluginManifest
+
+
+class TopologicalSorter:
+    """Executes Directed Acyclic Graph calculations parsing installation orders securely."""
+
+    @staticmethod
+    def sort_plugins(manifests: List[PluginManifest]) -> List[PluginManifest]:
+        """Calculates installation orders while trapping dependency cycles.
+
+        Args:
+            manifests: Component schema data matrix references array list.
+
+        Returns:
+            List[PluginManifest]: Linearly sorted loading execution list matrix.
+
+        Raises:
+            PluginValidationError: If circular reference chains are discovered.
+        """
+        adjacency: Dict[str, Set[str]] = {}
+        lookup: Dict[str, PluginManifest] = {m.name: m for m in manifests}
+
+        for m in manifests:
+            adjacency[m.name] = set()
+            for dep in m.dependencies:
+                if dep.name in lookup:
+                    adjacency[m.name].add(dep.name)
+
+        visited: Set[str] = set()
+        stack: Set[str] = set()
+        order: List[str] = []
+
+        def traverse(name: str) -> None:
+            if name in stack:
+                raise PluginValidationError(
+                    f"Circular reference loop tracked involving component: {name}"
+                )
+            if name not in visited:
+                stack.add(name)
+                for dep in adjacency.get(name, set()):
+                    traverse(dep)
+                stack.remove(name)
+                visited.add(name)
+                order.append(name)
+
+        for manifest in manifests:
+            if manifest.name not in visited:
+                traverse(manifest.name)
+
+        return [lookup[name] for name in order]
+
+--- File: app/kernel/plugin/discovery_service.py ---
+"""Orchestrator integrating scanner, parser, resolver, and topological sorting mechanisms."""
+
+import pathlib
+from typing import List
+from app.kernel.exceptions.plugin import PluginLoadError
+from app.kernel.plugin.manifest import PluginManifest
+from app.kernel.plugin.scanner import PluginScanner
+from app.kernel.plugin.dependency import PluginDependencyResolver
+from app.kernel.plugin.topology import TopologicalSorter
+
+
+class PluginDiscoveryService:
+    """Discovers, parses, resolves, and topologically sorts plugins from the filesystem."""
+
+    def __init__(
+        self,
+        scanner: PluginScanner,
+        resolver: PluginDependencyResolver,
+        sorter: TopologicalSorter,
+    ) -> None:
+        """Initializes the discovery service with pipeline dependencies.
+
+        Args:
+            scanner: Filesystem explorer component.
+            resolver: Semantic dependency requirement checker.
+            sorter: Dependency graph linear execution sorter.
+        """
+        self._scanner = scanner
+        self._resolver = resolver
+        self._sorter = sorter
+
+    def discover_and_sort(self, base_path: pathlib.Path) -> List[PluginManifest]:
+        """Runs the entire discovery pipeline from root scan to ordered manifests output.
+
+        Args:
+            base_path: Main folder destination search target to process.
+
+        Returns:
+            List[PluginManifest]: Topologically ordered valid plugin manifests.
+
+        Raises:
+            PluginLoadError: If any underlying phase fails or encounters errors.
+        """
+        try:
+            discovered_map = self._scanner.scan_directory(base_path)
+            manifest_list = list(discovered_map.values())
+            validated_manifests = self._resolver.resolve_requirements(manifest_list)
+            sorted_manifests = self._sorter.sort_plugins(validated_manifests)
+            return sorted_manifests
+        except Exception as exc:
+            if isinstance(exc, PluginLoadError):
+                raise exc
+            raise PluginLoadError(
+                f"Plugin discovery pipeline failed processing directory layout: {exc}"
+            ) from exc
+
+--- File: app/kernel/plugin/event_model.py ---
+"""Event definitions and payload contracts for the enterprise plugin subsystem."""
+
+from dataclasses import dataclass, field
+from datetime import datetime
+from typing import Any, Dict
+
+
+@dataclass(frozen=True)
+class KernelEvent:
+    """Immutable event payload container transmitted across the system event bus fabric."""
+
+    topic: str
+    sender: str
+    payload: Dict[str, Any] = field(default_factory=dict)
+    timestamp: datetime = field(default_factory=datetime.utcnow)
+
+--- File: app/kernel/plugin/event_bus.py ---
+"""Synchronous/Asynchronous thread-safe event bus broker execution engine."""
+
+import asyncio
+import inspect
+import logging
+from typing import Any, Callable, Dict, Set
+from app.kernel.plugin.event_model import KernelEvent
+
+logger = logging.getLogger("ADE-APEX.EventBus")
+
+
+class PluginEventBus:
+    """Enterprise event broker managing registrations and isolated asynchronous topic dispatches."""
+
+    def __init__(self) -> None:
+        """Initializes subject topic registration matrices."""
+        self._listeners: Dict[str, Set[Callable[[KernelEvent], Any]]] = {}
+
+    def subscribe(self, topic: str, handler: Callable[[KernelEvent], Any]) -> None:
+        """Registers a handler callable to receive event dispatches for a specific topic.
+
+        Args:
+            topic: Target message routing pattern string.
+            handler: Callable callback logic tracking structural execution targets.
+        """
+        if topic not in self._listeners:
+            self._listeners[topic] = set()
+        self._listeners[topic].add(handler)
+
+    def unsubscribe(self, topic: str, handler: Callable[[KernelEvent], Any]) -> None:
+        """Removes an active handler registration mapping allocation safely.
+
+        Args:
+            topic: Explicit message route channel match string.
+            handler: Previously configured callback method block.
+        """
+        if topic in self._listeners and handler in self._listeners[topic]:
+            self._listeners[topic].remove(handler)
+            if not self._listeners[topic]:
+                del self._listeners[topic]
+
+    async def publish(self, event: KernelEvent) -> None:
+        """Asynchronously dispatches an event frame out to all topic subscription listeners.
+
+        Args:
+            event: Immutable transaction context record under current transmission.
+        """
+        handlers = self._listeners.get(event.topic, set()).copy()
+        if not handlers:
+            return
+
+        tasks = [self._safe_execute_handler(handler, event) for handler in handlers]
+        await asyncio.gather(*tasks, return_exceptions=True)
+
+    async def _safe_execute_handler(
+        self, handler: Callable[[KernelEvent], Any], event: KernelEvent
+    ) -> None:
+        """Protects event cycle dispatches against unhandled handler loop error faults.
+
+        Args:
+            handler: Processing component function boundary target block.
+            event: Core contextual details payload data frame.
+        """
+        try:
+            if inspect.iscoroutinefunction(handler):
+                await handler(event)
+            else:
+                handler(event)
+        except Exception as exc:
+            logger.error(
+                f"EventBus route processing error encountered inside handler {handler.__name__}: {exc}"
+            )
+
+--- File: app/agents/base/__init__.py ---
+
+--- File: app/agents/system/__init__.py ---
+
+--- File: app/agents/builtin/__init__.py ---
+
+--- File: app/agents/__init__.py ---
+
+--- File: app/workflows/runtime/__init__.py ---
+
+--- File: app/workflows/engine/__init__.py ---
+
+--- File: app/workflows/models/__init__.py ---
+
+--- File: app/workflows/__init__.py ---
+
+--- File: app/events/publishers/__init__.py ---
+
+--- File: app/events/subscribers/__init__.py ---
+
+--- File: app/events/bus/__init__.py ---
+
+--- File: app/events/__init__.py ---
+
+--- File: app/plugins/sdk/__init__.py ---
+
+--- File: app/plugins/runtime/__init__.py ---
+
+--- File: app/plugins/runtime/runtime.py ---
+"""
+Plugin runtime.
+
+Executes registered plugins.
+"""
+
+from __future__ import annotations
+
+from typing import Any
+
+from app.plugins.registry.manager import PluginManager
+
+
+class PluginRuntime:
+    """
+    Runtime for executing plugins.
+    """
+
+    def __init__(self) -> None:
+        self.manager = PluginManager()
+
+    async def execute(
+        self,
+        module: str,
+        action: str,
+        **kwargs: Any,
+    ) -> Any:
+        plugin = self.manager.load(module)
+
+        return await plugin.execute(
+            action,
+            **kwargs,
+        )
+
+--- File: app/plugins/registry/__init__.py ---
+
+--- File: app/plugins/registry/registry.py ---
+"""
+Plugin registry for the ADE-APEX platform.
+
+Responsible for registering, discovering and retrieving plugins.
+"""
+
+from __future__ import annotations
+
+from app.kernel.contracts.plugin import PluginContract
+
+
+class PluginRegistry:
+    """
+    Central plugin registry.
+    """
+
+    def __init__(self) -> None:
+        self._plugins: dict[str, PluginContract] = {}
+
+    def register(self, plugin: PluginContract) -> None:
+        """
+        Register a plugin.
+        """
+        self._plugins[plugin.metadata.name] = plugin
+
+    def unregister(self, name: str) -> None:
+        """
+        Remove a plugin.
+        """
+        self._plugins.pop(name, None)
+
+    def get(self, name: str) -> PluginContract | None:
+        """
+        Retrieve a plugin.
+        """
+        return self._plugins.get(name)
+
+    def all(self) -> list[PluginContract]:
+        """
+        Return every registered plugin.
+        """
+        return list(self._plugins.values())
+
+    def exists(self, name: str) -> bool:
+        """
+        Check if plugin exists.
+        """
+        return name in self._plugins
+
+--- File: app/plugins/registry/discovery.py ---
+"""
+Plugin discovery for ADE-APEX.
+
+Discovers plugin implementations without loading them.
+"""
+
+from __future__ import annotations
+
+from pathlib import Path
+
+
+class PluginDiscovery:
+    """
+    Discovers available plugins.
+    """
+
+    def discover(self, directory: str) -> list[Path]:
+        path = Path(directory)
+
+        if not path.exists():
+            return []
+
+        return sorted(path.glob("*.py"))
+
+--- File: app/plugins/registry/loader.py ---
+"""
+Plugin loader for ADE-APEX.
+
+Responsible for importing plugin modules.
+"""
+
+from __future__ import annotations
+
+import importlib
+
+
+class PluginLoader:
+    """
+    Loads plugin modules.
+    """
+
+    def load(self, module: str):
+        return importlib.import_module(module)
+
+--- File: app/plugins/registry/manager.py ---
+"""
+Plugin manager.
+
+Coordinates discovery, loading and registration.
+"""
+
+from __future__ import annotations
+
+from app.plugins.registry.discovery import PluginDiscovery
+from app.plugins.registry.loader import PluginLoader
+from app.plugins.registry.registry import PluginRegistry
+
+
+class PluginManager:
+    """
+    High-level plugin manager.
+    """
+
+    def __init__(self) -> None:
+        self.discovery = PluginDiscovery()
+        self.loader = PluginLoader()
+        self.registry = PluginRegistry()
+
+    def discover(self, directory: str):
+        return self.discovery.discover(directory)
+
+    def load(self, module: str):
+        plugin = self.loader.load(module)
+        self.registry.register(plugin)
+        return plugin
+
+--- File: app/plugins/__init__.py ---
+
+--- File: app/connectors/base/__init__.py ---
+
+--- File: app/connectors/http/__init__.py ---
+
+--- File: app/connectors/database/__init__.py ---
+
+--- File: app/connectors/filesystem/__init__.py ---
+
+--- File: app/connectors/llm/__init__.py ---
+
+--- File: app/connectors/__init__.py ---
+
+--- File: app/services/common/__init__.py ---
+
+--- File: app/services/__init__.py ---
+
+--- File: app/models/domain/__init__.py ---
+
+--- File: app/models/database/__init__.py ---
+
+--- File: app/models/__init__.py ---
+
+--- File: app/schemas/api/__init__.py ---
+
+--- File: app/schemas/events/__init__.py ---
+
+--- File: app/schemas/__init__.py ---
+
+--- File: app/utils/__init__.py ---
+
+--- File: app/config/settings/__init__.py ---
+from .config import Settings, get_settings, settings
+
+__all__ = [
+    "Settings",
+    "get_settings",
+    "settings",
+]
+
+--- File: app/config/settings/config.py ---
+from functools import lru_cache
+
+from pydantic_settings import BaseSettings, SettingsConfigDict
+
+
+class Settings(BaseSettings):
+    """
+    ADE-APEX Global Configuration
+    """
+
+    APP_NAME: str = "ADE-APEX AI Platform"
+    APP_VERSION: str = "1.0.0"
+    DEBUG: bool = True
+
+    API_PREFIX: str = "/api/v1"
+
+    HOST: str = "0.0.0.0"
+    PORT: int = 8000
+
+    OPENAI_API_KEY: str = ""
+    ANTHROPIC_API_KEY: str = ""
+    GOOGLE_API_KEY: str = ""
+
+    DATABASE_URL: str = "postgresql+psycopg://postgres:postgres@localhost:5432/ade_apex"
+
+    REDIS_URL: str = "redis://localhost:6379/0"
+
+    LOG_LEVEL: str = "INFO"
+
+    model_config = SettingsConfigDict(
+        env_file=".env.example",
+        extra="ignore",
+    )
+
+
+@lru_cache
+def get_settings() -> Settings:
+    return Settings()
+
+
+settings = get_settings()
+
+--- File: app/config/providers/__init__.py ---
+
+--- File: app/config/__init__.py ---
+
+--- File: app/__init__.py ---
+
+--- File: app/main.py ---
+from contextlib import asynccontextmanager
+
+from fastapi import FastAPI
+from fastapi.responses import JSONResponse
+
+from app.api.v1 import router as api_router
+from app.core import configure_logging
+from app.config.settings import settings
+from app.kernel.runtime import kernel
+
+configure_logging(settings.LOG_LEVEL)
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """
+    ADE-APEX application lifecycle.
+    """
+    await kernel.start()
+    yield
+    await kernel.stop()
+
+
+app = FastAPI(
+    title=settings.APP_NAME,
+    description="Enterprise AI Operating System",
+    version=settings.APP_VERSION,
+    lifespan=lifespan,
+)
+
+app.include_router(api_router)
+
+
+@app.get("/", tags=["System"])
+async def root():
+    return {
+        "name": settings.APP_NAME,
+        "version": settings.APP_VERSION,
+        "status": "running",
+        "kernel": kernel.status(),
+    }
+
+
+@app.get("/health", tags=["System"])
+async def health():
+    return JSONResponse(
+        {
+            "status": "healthy",
+            "service": settings.APP_NAME,
+            "kernel": kernel.status(),
+        }
+    )
+
+--- File: tests/unit/__init__.py ---
+
+--- File: tests/integration/__init__.py ---
+
+--- File: tests/__init__.py ---
+
+--- File: tests/plugin_runtime/test_plugin_registry.py ---
+from app.plugins.registry.registry import PluginRegistry
+
+
+def test_registry_initially_empty():
+    registry = PluginRegistry()
+    assert registry.all() == []
+
+
+def test_unregister_missing_plugin():
+    registry = PluginRegistry()
+    registry.unregister("missing")
+    assert registry.all() == []
+
+
+def test_exists_returns_false():
+    registry = PluginRegistry()
+    assert registry.exists("missing") is False
+
+--- File: tests/plugin_runtime/test_plugin_discovery.py ---
+from pathlib import Path
+from tempfile import TemporaryDirectory
+
+from app.plugins.registry.discovery import PluginDiscovery
+
+
+def test_empty_directory():
+    with TemporaryDirectory() as tmp:
+        discovery = PluginDiscovery()
+        plugins = discovery.discover(tmp)
+        assert plugins == []
+
+
+def test_discovers_python_files():
+    with TemporaryDirectory() as tmp:
+        p = Path(tmp)
+
+        (p / "plugin_one.py").write_text("# plugin")
+        (p / "plugin_two.py").write_text("# plugin")
+        (p / "README.md").write_text("ignore")
+
+        discovery = PluginDiscovery()
+        plugins = discovery.discover(tmp)
+
+        assert len(plugins) == 2
+        assert all(x.suffix == ".py" for x in plugins)
+
+--- File: tests/plugin_runtime/test_plugin_loader.py ---
+import pytest
+
+from app.plugins.registry.loader import PluginLoader
+
+
+def test_load_standard_library_module():
+    loader = PluginLoader()
+    module = loader.load("json")
+    assert module.__name__ == "json"
+
+
+def test_load_missing_module():
+    loader = PluginLoader()
+
+    with pytest.raises(ModuleNotFoundError):
+        loader.load("ade_apex_missing_plugin")
+
+--- File: tests/plugin_runtime/test_plugin_manager.py ---
+from app.plugins.registry.manager import PluginManager
+
+
+def test_manager_initialization():
+    manager = PluginManager()
+
+    assert manager.discovery is not None
+    assert manager.loader is not None
+    assert manager.registry is not None
+
+--- File: tests/plugin_runtime/test_plugin_runtime.py ---
+from app.plugins.runtime.runtime import PluginRuntime
+
+
+def test_runtime_initialization():
+    runtime = PluginRuntime()
+
+    assert runtime.manager is not None
+
+--- File: tests/kernel/plugin/test_runtime_phase2a.py ---
+"""Production comprehensive suite validating Phase 2A Plugin Runtime requirements."""
+
+import pytest
+from typing import Any
+from app.kernel.exceptions.plugin import (
+    PluginValidationError,
+    PluginLoadError,
+    PluginExecutionError,
+    PluginLifecycleError,
+)
+from app.kernel.plugin.model import PluginMetadata, PluginState
+from app.kernel.plugin.context import PluginRuntimeContext
+from app.kernel.plugin.validator import PluginValidator
+from app.kernel.plugin.loader import PluginLoader
+from app.kernel.plugin.registry import PluginRegistry
+from app.kernel.plugin.manager import PluginManager
+from app.kernel.plugin.runtime import PluginRuntime
+
+
+class MockValidPlugin:
+    """Compliant plugin class matching production specifications perfectly."""
+
+    def __init__(self, name: str = "TestPlugin", version: str = "1.0.0") -> None:
+        self.metadata = PluginMetadata(
+            name=name,
+            version=version,
+            description="Enterprise Test Automation Mock Component",
+            author="ADE-APEX Core Core Dev",
+        )
+        self.init_called = False
+        self.shutdown_called = False
+
+    async def initialize(self) -> None:
+        self.init_called = True
+
+    async def execute(self, context: Any) -> Any:
+        return f"Processed context via {self.metadata.name}"
+
+    async def shutdown(self) -> None:
+        self.shutdown_called = True
+
+
+class MockBrokenPlugin:
+    """Corrupt plugin component missing interface configuration metrics blocks."""
+
+    def __init__(self) -> None:
+        self.metadata = PluginMetadata(
+            name="BrokenPlugin",
+            version="1.0.0",
+            description="Invalid contract structure mock",
+            author="Faulty Dev",
+        )
+
+    async def initialize(self) -> None:
+        pass
+
+
+@pytest.mark.asyncio
+async def test_successful_plugin_lifecycle_and_state_transitions() -> None:
+    """Verifies standard state paths matching healthy transitions profiles."""
+    validator = PluginValidator()
+    loader = PluginLoader(validator)
+    registry = PluginRegistry()
+    manager = PluginManager(registry, loader)
+
+    plugin = MockValidPlugin()
+    manager.install_plugin(plugin)
+
+    health = manager.get_plugin_health(plugin.metadata.name)
+    assert health is not None
+    assert health.status == PluginState.LOADED
+
+    lifecycle = manager.get_lifecycle(plugin.metadata.name)
+    await lifecycle.initialize()
+    assert health.status == PluginState.INITIALIZED
+    assert plugin.init_called is True
+
+    await lifecycle.start()
+    assert health.status == PluginState.RUNNING
+
+    await lifecycle.shutdown()
+    assert health.status == PluginState.STOPPED
+    assert plugin.shutdown_called is True
+
+
+@pytest.mark.asyncio
+async def test_plugin_validator_rejects_malformed_contracts() -> None:
+    """Checks contract schema validators guard against invalid structures."""
+    validator = PluginValidator()
+    broken = MockBrokenPlugin()
+
+    with pytest.raises(PluginValidationError):
+        validator.validate(broken)
+
+
+@pytest.mark.asyncio
+async def test_loader_prevents_duplicate_namespace_registrations() -> None:
+    """Verifies names protection mechanisms filter out naming collisions."""
+    validator = PluginValidator()
+    loader = PluginLoader(validator)
+    registry = PluginRegistry()
+    manager = PluginManager(registry, loader)
+
+    plugin1 = MockValidPlugin(name="UniqueName")
+    plugin2 = MockValidPlugin(name="UniqueName")
+
+    manager.install_plugin(plugin1)
+    with pytest.raises(PluginLoadError):
+        manager.install_plugin(plugin2)
+
+
+@pytest.mark.asyncio
+async def test_runtime_context_integration_and_execution() -> None:
+    """Validates execution runs cleanly inside active environments contexts."""
+    validator = PluginValidator()
+    loader = PluginLoader(validator)
+    registry = PluginRegistry()
+    manager = PluginManager(registry, loader)
+    runtime = PluginRuntime(manager)
+
+    plugin = MockValidPlugin()
+    manager.install_plugin(plugin)
+
+    lifecycle = manager.get_lifecycle(plugin.metadata.name)
+    await lifecycle.initialize()
+    await lifecycle.start()
+
+    context = PluginRuntimeContext(
+        environment="production", global_config={"timeout": 30}
+    )
+    result = await runtime.execute_plugin(plugin.metadata.name, context)
+
+    assert result == "Processed context via TestPlugin"
+    health = manager.get_plugin_health(plugin.metadata.name)
+    assert health.execution_count == 1
+    assert health.last_execution is not None
+    assert health.last_error is None
+
+
+@pytest.mark.asyncio
+async def test_lifecycle_failure_during_initialization() -> None:
+    """Verifies failed dynamic components mark error frameworks correctly."""
+    validator = PluginValidator()
+    loader = PluginLoader(validator)
+    registry = PluginRegistry()
+    manager = PluginManager(registry, loader)
+
+    plugin = MockValidPlugin(name="FaultyInitPlugin")
+
+    async def bad_init() -> None:
+        raise ValueError("Hardware memory fault simulation.")
+
+    plugin.initialize = bad_init  # type: ignore
+
+    manager.install_plugin(plugin)
+    lifecycle = manager.get_lifecycle(plugin.metadata.name)
+
+    with pytest.raises(PluginLifecycleError):
+        await lifecycle.initialize()
+
+    health = manager.get_plugin_health(plugin.metadata.name)
+    assert health.status == PluginState.FAILED
+    assert "Hardware memory fault" in health.last_error
+
+
+@pytest.mark.asyncio
+async def test_runtime_execution_failure_handling() -> None:
+    """Ensures errors thrown within task loops are captured safely inside telemetry logs."""
+    validator = PluginValidator()
+    loader = PluginLoader(validator)
+    registry = PluginRegistry()
+    manager = PluginManager(registry, loader)
+    runtime = PluginRuntime(manager)
+
+    plugin = MockValidPlugin(name="FaultyExecPlugin")
+
+    async def bad_exec(ctx: Any) -> None:
+        raise RuntimeError("Network pipeline timeout.")
+
+    plugin.execute = bad_exec  # type: ignore
+
+    manager.install_plugin(plugin)
+    lifecycle = manager.get_lifecycle(plugin.metadata.name)
+    await lifecycle.initialize()
+    await lifecycle.start()
+
+    context = PluginRuntimeContext(environment="staging")
+    with pytest.raises(PluginExecutionError):
+        await runtime.execute_plugin(plugin.metadata.name, context)
+
+    health = manager.get_plugin_health(plugin.metadata.name)
+    assert health.execution_count == 1
+    assert "Network pipeline timeout" in health.last_error
+
+
+@pytest.mark.asyncio
+async def test_enable_disable_lifecycle_state_flows() -> None:
+    """Validates toggle states can modify core framework runtime visibility settings."""
+    validator = PluginValidator()
+    loader = PluginLoader(validator)
+    registry = PluginRegistry()
+    manager = PluginManager(registry, loader)
+
+    plugin = MockValidPlugin()
+    manager.install_plugin(plugin)
+    lifecycle = manager.get_lifecycle(plugin.metadata.name)
+    health = manager.get_plugin_health(plugin.metadata.name)
+
+    lifecycle.disable()
+    assert health.status == PluginState.DISABLED
+
+    lifecycle.enable()
+    assert health.status == PluginState.LOADED
+
+--- File: tests/kernel/plugin/test_discovery_phase2b.py ---
+"""Production validation suite checking structural Phase 2B Discovery implementation."""
+
+import json
+import pathlib
+import pytest
+from app.kernel.exceptions.plugin import PluginValidationError
+from app.kernel.plugin.manifest import PluginManifest, PluginDependencySpec
+from app.kernel.plugin.parser import PluginManifestParser
+from app.kernel.plugin.scanner import PluginScanner
+from app.kernel.plugin.dependency import PluginDependencyResolver
+from app.kernel.plugin.topology import TopologicalSorter
+
+
+def test_parser_with_valid_manifest() -> None:
+    """Verifies that a well-formed JSON string is correctly parsed into a PluginManifest."""
+    raw_json = """{
+        "name": "core_ledger",
+        "version": "1.4.2",
+        "entry_point": "app.plugins.ledger.Engine",
+        "description": "Enterprise Ledger Core",
+        "author": "ADE-APEX Engineering",
+        "dependencies": [
+            {"name": "payment_gateway", "version_range": "==2.0.0", "optional": false}
+        ],
+        "capabilities": ["accounting", "ledger_flow"],
+        "metadata_options": {"isolation_level": "strict"}
+    }"""
+    manifest = PluginManifestParser.parse_json(raw_json)
+    assert manifest.name == "core_ledger"
+    assert manifest.version == "1.4.2"
+    assert len(manifest.dependencies) == 1
+    assert manifest.dependencies[0].name == "payment_gateway"
+    assert manifest.dependencies[0].optional is False
+
+
+def test_parser_invalid_json_throws_validation_error() -> None:
+    """Ensures that poorly structured syntax triggers a validation failure response."""
+    bad_json = "{ 'name': 'broken', malformed_json: true "
+    with pytest.raises(PluginValidationError):
+        PluginManifestParser.parse_json(bad_json)
+
+
+def test_parser_missing_keys_throws_validation_error() -> None:
+    """Ensures that missing required fields inside raw schemas raises validation errors."""
+    incomplete_json = """{
+        "name": "incomplete_plugin",
+        "version": "1.0.0"
+    }"""
+    with pytest.raises(PluginValidationError) as exc:
+        PluginManifestParser.parse_json(incomplete_json)
+    assert "Missing required manifest elements" in str(exc.value)
+
+
+def test_scanner_extracts_manifest_from_directory(tmp_path: pathlib.Path) -> None:
+    """Verifies filesystem navigation parsing runs correctly across target folders."""
+    plugin_dir = tmp_path / "mock_plugin"
+    plugin_dir.mkdir()
+    manifest_file = plugin_dir / "manifest.json"
+
+    valid_data = {
+        "name": "mock_plugin",
+        "version": "1.0.0",
+        "entry_point": "main.Plugin",
+        "description": "Mock automated workspace tool",
+        "author": "Dev",
+    }
+    manifest_file.write_text(json.dumps(valid_data), encoding="utf-8")
+
+    parser = PluginManifestParser()
+    scanner = PluginScanner(parser)
+    results = scanner.scan_directory(tmp_path)
+
+    assert len(results) == 1
+    assert plugin_dir in results
+    assert results[plugin_dir].name == "mock_plugin"
+
+
+def test_resolver_handles_missing_critical_dependency() -> None:
+    """Checks that missing non-optional dependencies trigger resolution failure blocks."""
+    manifest = PluginManifest(
+        name="A",
+        version="1.0.0",
+        entry_point="ep",
+        description="d",
+        author="a",
+        dependencies=[PluginDependencySpec(name="B", version_range="*")],
+    )
+    resolver = PluginDependencyResolver()
+    with pytest.raises(PluginValidationError) as exc:
+        resolver.resolve_requirements([manifest])
+    assert "Unresolved critical dependency" in str(exc.value)
+
+
+def test_resolver_allows_missing_optional_dependency() -> None:
+    """Ensures that missing dependencies marked optional do not interrupt loading runs."""
+    manifest = PluginManifest(
+        name="A",
+        version="1.0.0",
+        entry_point="ep",
+        description="d",
+        author="a",
+        dependencies=[PluginDependencySpec(name="B", version_range="*", optional=True)],
+    )
+    resolver = PluginDependencyResolver()
+    results = resolver.resolve_requirements([manifest])
+    assert len(results) == 1
+
+
+def test_topological_sorting_resolves_linear_order() -> None:
+    """Validates that installation arrays match explicit requirement hierarchies."""
+    manifest_b = PluginManifest(
+        name="B", version="1.0.0", entry_point="ep", description="d", author="a"
+    )
+    manifest_a = PluginManifest(
+        name="A",
+        version="1.0.0",
+        entry_point="ep",
+        description="d",
+        author="a",
+        dependencies=[PluginDependencySpec(name="B", version_range="*")],
+    )
+
+    sorted_output = TopologicalSorter.sort_plugins([manifest_a, manifest_b])
+    assert len(sorted_output) == 2
+    assert sorted_output[0].name == "B"
+    assert sorted_output[1].name == "A"
+
+
+def test_topological_sorting_detects_cycles() -> None:
+    """Verifies that dependency loop cycles throw explicit validation exceptions."""
+    manifest_a = PluginManifest(
+        name="A",
+        version="1.0.0",
+        entry_point="ep",
+        description="d",
+        author="a",
+        dependencies=[PluginDependencySpec(name="B", version_range="*")],
+    )
+    manifest_b = PluginManifest(
+        name="B",
+        version="1.0.0",
+        entry_point="ep",
+        description="d",
+        author="a",
+        dependencies=[PluginDependencySpec(name="A", version_range="*")],
+    )
+
+    with pytest.raises(PluginValidationError) as exc:
+        TopologicalSorter.sort_plugins([manifest_a, manifest_b])
+    assert "Circular reference loop tracked" in str(exc.value)
+
+--- File: tests/kernel/plugin/test_integration_phase2c.py ---
+"""Production integration testing suite validating pipeline interactions from Phase 2B to Phase 2A."""
+
+import json
+import pathlib
+import pytest
+from typing import Any
+from app.kernel.exceptions.plugin import PluginLoadError
+from app.kernel.plugin.model import PluginMetadata, PluginState
+from app.kernel.plugin.context import PluginRuntimeContext
+from app.kernel.plugin.validator import PluginValidator
+from app.kernel.plugin.loader import PluginLoader
+from app.kernel.plugin.registry import PluginRegistry
+from app.kernel.plugin.manager import PluginManager
+from app.kernel.plugin.runtime import PluginRuntime
+from app.kernel.plugin.parser import PluginManifestParser
+from app.kernel.plugin.scanner import PluginScanner
+from app.kernel.plugin.dependency import PluginDependencyResolver
+from app.kernel.plugin.topology import TopologicalSorter
+from app.kernel.plugin.discovery_service import PluginDiscoveryService
+
+
+class DynamicDiscoveredMockPlugin:
+    """Mock instantiation target dynamically reflecting values parsed from physical discovery steps."""
+
+    def __init__(self, name: str, version: str) -> None:
+        self.metadata = PluginMetadata(
+            name=name,
+            version=version,
+            description="Integration Runtime Test Mock Instance",
+            author="ADE-APEX System Engineering Core",
+        )
+        self.initialized = False
+        self.executed = False
+        self.shutdown_completed = False
+
+    async def initialize(self) -> None:
+        self.initialized = True
+
+    async def execute(self, context: Any) -> Any:
+        self.executed = True
+        return f"Execution success for custom module: {self.metadata.name}"
+
+    async def shutdown(self) -> None:
+        self.shutdown_completed = True
+
+
+@pytest.mark.asyncio
+async def test_end_to_end_discovery_to_runtime_pipeline_execution(
+    tmp_path: pathlib.Path,
+) -> None:
+    """Validates full architecture sequence traversing exploration to running stages."""
+    # 1. Setup physical workspace mock modules setup
+    plugin_a_dir = tmp_path / "plugin_alpha"
+    plugin_b_dir = tmp_path / "plugin_beta"
+    plugin_a_dir.mkdir()
+    plugin_b_dir.mkdir()
+
+    manifest_a = {
+        "name": "plugin_alpha",
+        "version": "2.1.0",
+        "entry_point": "app.plugins.Alpha",
+        "description": "Alpha service",
+        "author": "Core Engine",
+        "dependencies": [{"name": "plugin_beta", "version_range": "1.0.0"}],
+    }
+    manifest_b = {
+        "name": "plugin_beta",
+        "version": "1.0.0",
+        "entry_point": "app.plugins.Beta",
+        "description": "Beta low-level driver dependency",
+        "author": "System Support Core",
+    }
+
+    (plugin_a_dir / "manifest.json").write_text(
+        json.dumps(manifest_a), encoding="utf-8"
+    )
+    (plugin_b_dir / "manifest.json").write_text(
+        json.dumps(manifest_b), encoding="utf-8"
+    )
+
+    # 2. Instantiate all discovery tools
+    parser = PluginManifestParser()
+    scanner = PluginScanner(parser)
+    resolver = PluginDependencyResolver()
+    sorter = TopologicalSorter()
+    discovery_service = PluginDiscoveryService(scanner, resolver, sorter)
+
+    # 3. Instantiate Phase 2A components
+    validator = PluginValidator()
+    loader = PluginLoader(validator)
+    registry = PluginRegistry()
+    manager = PluginManager(registry, loader)
+    runtime = PluginRuntime(manager)
+
+    # 4. Execute Discovery Run
+    ordered_manifests = discovery_service.discover_and_sort(tmp_path)
+    assert len(ordered_manifests) == 2
+    assert ordered_manifests[0].name == "plugin_beta"
+    assert ordered_manifests[1].name == "plugin_alpha"
+
+    # 5. Dynamically load mock plugin instances based on discovery orders
+    instances = {
+        "plugin_beta": DynamicDiscoveredMockPlugin("plugin_beta", "1.0.0"),
+        "plugin_alpha": DynamicDiscoveredMockPlugin("plugin_alpha", "2.1.0"),
+    }
+
+    for manifest in ordered_manifests:
+        plugin_instance = instances[manifest.name]
+        manager.install_plugin(plugin_instance)
+
+    # 6. Verify managers and registries track elements perfectly
+    installed_list = manager.list_installed()
+    assert len(installed_list) == 2
+
+    alpha_health = manager.get_plugin_health("plugin_alpha")
+    beta_health = manager.get_plugin_health("plugin_beta")
+    assert alpha_health is not None and beta_health is not None
+    assert alpha_health.status == PluginState.LOADED
+    assert beta_health.status == PluginState.LOADED
+
+    # 7. Advance structures sequentially forward into operational scopes
+    for manifest in ordered_manifests:
+        lifecycle = manager.get_lifecycle(manifest.name)
+        await lifecycle.initialize()
+        await lifecycle.start()
+
+    assert alpha_health.status == PluginState.RUNNING
+    assert beta_health.status == PluginState.RUNNING
+
+    # 8. Fire execution tasks checks
+    context = PluginRuntimeContext(environment="production")
+    result_beta = await runtime.execute_plugin("plugin_beta", context)
+    result_alpha = await runtime.execute_plugin("plugin_alpha", context)
+
+    assert result_beta == "Execution success for custom module: plugin_beta"
+    assert result_alpha == "Execution success for custom module: plugin_alpha"
+    assert beta_health.execution_count == 1
+    assert alpha_health.execution_count == 1
+
+
+@pytest.mark.asyncio
+async def test_pipeline_breaks_on_discovery_exception(tmp_path: pathlib.Path) -> None:
+    """Ensures discovery service routes errors correctly up into management layers."""
+    corrupt_dir = tmp_path / "corrupt_plugin"
+    corrupt_dir.mkdir()
+    (corrupt_dir / "manifest.json").write_text(
+        "{ malformed json string ", encoding="utf-8"
+    )
+
+    parser = PluginManifestParser()
+    scanner = PluginScanner(parser)
+    resolver = PluginDependencyResolver()
+    sorter = TopologicalSorter()
+    discovery_service = PluginDiscoveryService(scanner, resolver, sorter)
+
+    with pytest.raises(PluginLoadError):
+        discovery_service.discover_and_sort(tmp_path)
